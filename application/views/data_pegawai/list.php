@@ -61,7 +61,7 @@
                                     <a href="" class="btn btn-info btn-sm">Detail</a>
                                     <!-- <a href="<?php echo base_url('ubah-pegawai');?>/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a> -->
                                     <a href="<?php echo base_url();?>DataPegawaiController/ubahPegawai/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a>
-                                    <a href="" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteData<?= $d['id_pegawai'] ?>">Hapus</a>
+                                    <button class="btn btn-danger btn-sm button-delete"  data-id_pegawai="<?= $d['id_pegawai']; ?>">Hapus</button>
 
                                     </td>
                                 </tr>
@@ -79,33 +79,44 @@
         </div>
     </div>
 
-    <!-- Data Hapus  -->
+   
 
-    <?php foreach ($pegawai as $d) : ?>
-            <!--delete Data-->
-            <div class="modal fade" id="deleteData<?= $d['id_pegawai'] ?>" role="dialog" aria-labelledby="addNewDataLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addNewDataLabel">Hapus Pegawai</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Anda yakin ingin menghapus data <?= $d['nama_pegawai'] ?></p>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            <a href="<?= base_url('DataPegawaiController/hapus?id_pegawai=')?><?= $d['id_pegawai'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-                        </div>
-
-                    </div>
-                </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-delete" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Hapus Pegawai</h5>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+            ></button>
             </div>
-        <?php endforeach ?>
+            <div class="modal-body">
+                
+                <p>Anda yakin ingin menghapus data ?</p>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?= base_url('DataPegawaiController/hapus?id_pegawai=')?><?= $d['id_pegawai'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+            </div>
+            
+        </div>
+        </div>
+    </div>
 
 </div>
     <!-- / Content -->
 <?php $this->load->view('Layouts/footer.php') ?>
+<script>
+   $(function() {
+        $(".button-delete").on('click',function(){
+            $data = $('.button-delete').data('id_pegawai')
+            $("#modal-delete").modal('show');
+            // alert($data)
+        })
+    });
+</script>
