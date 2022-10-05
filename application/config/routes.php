@@ -54,3 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['dashboard'] = 'DashboardController';
 $route['tipe-pegawai'] = 'DataMasterController/tipePegawai';
+$route['data-pegawai'] = 'DataPegawaiController/dataPegawai';
+$route['tambah-pegawai'] = 'DataPegawaiController/tambahPegawai';
+$route['ubah-pegawai'] = 'DataPegawaiController/ubahPegawai';

@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css'); ?>" />
 
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/apex-charts/apex-charts.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/datatables/dataTables.bootstrap4.min.css'); ?>" />
+    
 
     <!-- Page CSS -->
 
@@ -142,7 +144,8 @@
             </li>
             <li class="menu-item">
                  <!-- Pegawai -->
-                <a href="cards-basic.html" class="menu-link">
+                <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-pegawai')){ echo 'active';}?>">
+              <a href="<?= base_url('data-pegawai'); ?>" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-collection"></i>
                     <div data-i18n="Basic">Data Pegawai</div>
                 </a>

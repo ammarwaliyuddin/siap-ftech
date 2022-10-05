@@ -46,7 +46,22 @@
     <!-- Page JS -->
     <script src="<?= base_url('assets/js/dashboards-analytics.js'); ?>"></script>
 
+    <!-- Page JS -->
+    <script src="<?= base_url('assets/js/pages-account-settings-account.js'); ?>"></script>
+
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Data tables -->
+    <script src="<?= base_url('assets/vendor/libs/datatables/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/libs/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
+
+    <script>
+      $(document).ready(function() {
+        $('#mytable').DataTable({
+            responsive: true
+        });
+    });
+    </script>
   </body>
 </html>

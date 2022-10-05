@@ -1,0 +1,111 @@
+<?php $this->load->view('Layouts/header.php') ?>
+<!-- Content wrapper -->
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-semibold py-3 mb-4"><span class="text-muted fw-light">Data Pegawai</h4>
+    
+        <div class="row g-0">
+            <div class="col-12">
+                <!-- Basic Bootstrap Table -->
+                <div class="card p-4">
+                    <div class="col-12">
+                        <a href="<?= base_url('tambah-pegawai'); ?>" class="btn btn-primary">Tambah</a>
+
+                    </div>
+                    <div class="col-12 mt-4">
+
+                        <div class="table-responsive text-nowrap">
+                        <table class="table table-striped" id="mytable"">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nama</th>
+                                <th>Unit Kerja</th>
+                                <th>Alamat</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Foto</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                            <?php
+                            $i = 1;
+                            foreach ($pegawai as $d) : ?>
+                                
+                                <tr>
+                                    <th scope="row"><?= $i ?></th>
+                                    <td width="200"><?= $d['nama_pegawai'] ?></td>
+                                    <td width="100"><?= $d['unit_kerja'] ?></td>
+                                    <td width="300"><?= $d['alamat'] ?></td>
+                                    <td width="300"><?= $d['tanggal_lahir'] ?></td>
+                                    <td>
+                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                    <li
+                                    data-bs-toggle="tooltip"
+                                    data-popup="tooltip-custom"
+                                    data-bs-placement="top"
+                                    class="avatar avatar-md pull-up"
+                                    title="<?= $d['nama_pegawai'] ?>"
+                                    >
+                                    <img src="<?php if (!empty($d['foto'])) {
+                                                                echo base_url('assets/img/pegawai/' . $d['foto']);
+                                                            } ?>" alt="Avatar" class="rounded-circle" />
+                                    </li>
+                                    
+                                    </ul>
+                                    </td>
+                                    
+                                    <td>
+                                    <a href="" class="btn btn-info btn-sm">Detail</a>
+                                    <!-- <a href="<?php echo base_url('ubah-pegawai');?>/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a> -->
+                                    <a href="<?php echo base_url();?>DataPegawaiController/ubahPegawai/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a>
+                                    <a href="" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteData<?= $d['id_pegawai'] ?>">Hapus</a>
+
+                                    </td>
+                                </tr>
+                            <?php $i++;
+                            endforeach ?>
+                            
+                            
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Basic Bootstrap Table -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Hapus  -->
+
+    <?php foreach ($pegawai as $d) : ?>
+            <!--delete Data-->
+            <div class="modal fade" id="deleteData<?= $d['id_pegawai'] ?>" role="dialog" aria-labelledby="addNewDataLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addNewDataLabel">Hapus Pegawai</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Anda yakin ingin menghapus data <?= $d['nama_pegawai'] ?></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <a href="<?= base_url('DataPegawaiController/hapus?id_pegawai=')?><?= $d['id_pegawai'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+
+</div>
+    <!-- / Content -->
+<?php $this->load->view('Layouts/footer.php') ?>
