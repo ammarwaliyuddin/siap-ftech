@@ -172,38 +172,38 @@
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Master</span></li>
             <!-- Cards -->
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-unit')){ echo 'active';}?>">
+              <a href="<?= base_url('data-unit'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Unit Kerja</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-pangkat')){ echo 'active';}?>">
+              <a href="<?= base_url('data-pangkat'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Golongan</div>
+                <div data-i18n="Basic">Pangkat/Golongan</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-jabatan')){ echo 'active';}?>">
+              <a href="<?= base_url('data-jabatan'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Jabatan Fungsional</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-pendidikan')){ echo 'active';}?>">
+              <a href="<?= base_url('data-pendidikan'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Pendidikan</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-eselon')){ echo 'active';}?>">
+              <a href="<?= base_url('data-eselon'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Eselon</div>
               </a>
             </li>
-            <li class="menu-item <?php if(base_url(uri_string()) == base_url('tipe-pegawai')){ echo 'active';}?>">
-              <a href="<?= base_url('tipe-pegawai'); ?>" class="menu-link">
+            <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-tipe')){ echo 'active';}?>">
+              <a href="<?= base_url('data-tipe'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Basic">Tipe Pegawai</div>
               </a>

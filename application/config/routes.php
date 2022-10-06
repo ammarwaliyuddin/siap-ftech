@@ -53,7 +53,34 @@ $route['default_controller'] = 'AuthController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['dashboard'] = 'DashboardController';
-$route['tipe-pegawai'] = 'DataMasterController/tipePegawai';
+
 $route['data-pegawai'] = 'DataPegawaiController/dataPegawai';
 $route['tambah-pegawai'] = 'DataPegawaiController/tambahPegawai';
 $route['ubah-pegawai'] = 'DataPegawaiController/ubahPegawai';
+
+$route['data-unit'] = 'DataUnitController/dataUnit';
+$route['tambah-unit'] = 'DataUnitController/tambahUnit';
+$route['ubah-unit'] = 'DataUnitController/ubahUnit';
+
+$route['data-pangkat'] = 'DataPangkatController/dataPangkat';
+$route['tambah-pangkat'] = 'DataPangkatController/tambahPangkat';
+$route['ubah-pangkat'] = 'DataPangkatController/ubahPangkat';
+
+$route['data-jabatan'] = 'DataJabatanController/dataJabatan';
+$route['tambah-jabatan'] = 'DataJabatanController/tambahJabatan';
+$route['ubah-jabatan'] = 'DataJabatanController/ubahJabatan';
+
+$route['data-pendidikan'] = 'DataPendidikanController/dataPendidikan';
+$route['tambah-pendidikan'] = 'DataPendidikanController/tambahPendidikan';
+$route['ubah-pendidikan'] = 'DataPendidikanController/ubahPendidikan';
+
+$route['data-eselon'] = 'DataEselonController/dataEselon';
+$route['tambah-eselon'] = 'DataEselonController/tambahEselon';
+$route['ubah-eselon'] = 'DataEselonController/ubahEselon';
+
+$route['data-tipe'] = 'DataTipeController/dataTipe';
+$route['tambah-tipe'] = 'DataTipeController/tambahTipe';
+$route['ubah-tipe'] = 'DataTipeController/ubahTipe';
+
+
+// $route['tipe-pegawai'] = 'DataMasterController/tipePegawai';

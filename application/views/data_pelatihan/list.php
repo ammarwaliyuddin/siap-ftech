@@ -4,7 +4,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-semibold py-3 mb-4"><span class="text-muted fw-light">Data Pegawai</h4>
+        <h4 class="fw-semibold py-3 mb-4"><span class="text-muted fw-light">Data Pelatihan</h4>
     
         <div class="row g-0">
             <div class="col-12">
@@ -21,11 +21,10 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Unit Kerja</th>
-                                <th>Alamat</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Foto</th>
+                                <th>Nama Pegawai</th>
+                                <th>Jam Pelatihan</th>
+                                <th>Tanggal</th>
+                                <th>File</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -37,26 +36,9 @@
                                 <tr>
                                     <th scope="row"><?= $i ?></th>
                                     <td width="200"><?= $d['nama_pegawai'] ?></td>
-                                    <td width="100"><?= $d['unit_kerja'] ?></td>
-                                    <td width="300"><?= $d['alamat'] ?></td>
-                                    <td width="300"><?= $d['tanggal_lahir'] ?></td>
-                                    <td>
-                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                    <li
-                                    data-bs-toggle="tooltip"
-                                    data-popup="tooltip-custom"
-                                    data-bs-placement="top"
-                                    class="avatar avatar-md pull-up"
-                                    title="<?= $d['nama_pegawai'] ?>"
-                                    >
-                                    <img src="<?php if (!empty($d['foto'])) {
-                                                                echo base_url('assets/img/pegawai/' . $d['foto']);
-                                                            } ?>" alt="Avatar" class="rounded-circle" />
-                                    </li>
-                                    
-                                    </ul>
-                                    </td>
-                                    
+                                    <td width="100"><?= $d['jam_pelatihan'] ?></td>
+                                    <td width="300"><?= $d['tanggal'] ?></td>
+                                    <td width="300"><?= $d['file'] ?></td>
                                     <td>
                                     <a href="" class="btn btn-info btn-sm">Detail</a>
                                     <!-- <a href="<?php echo base_url('ubah-pegawai');?>/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a> -->
