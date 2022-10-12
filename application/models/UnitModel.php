@@ -22,22 +22,26 @@ class UnitModel extends CI_model
 		return $this->db->get_where('tbl_unit' , ['id_unit' => $id])->row_array();
 	}
 
+    public function cekUnit ($data)
+    {
+        return $this->db->get_where('tbl_unit' , ['unit_kerja' => $data])->row_array();
+    }
     public function tambahdata ($data)
     {
         $data = [
-			"unit_kerja" => $this->input->post('unit_kerja',true)
+			"unit_kerja" => $data
 		];
-		$this->db->insert('tbl_unit', $data);
+		return $this->db->insert('tbl_unit', $data);
     }
 
-    public function ubahdata($data)
+    public function ubahdata($idUnit,$unitKerja)
     {
         $data = [
-			"unit_kerja" => $this->input->post('unit_kerja',true)
+			"unit_kerja" => $unitKerja
 		];
         
-        $this->db->where('id_unit', $this->input->post('id_unit'));
-		$this->db->update('tbl_unit', $data);
+        $this->db->where('id_unit', $idUnit);
+		return $this->db->update('tbl_unit', $data);
     }
 
     public function hapusdata($id)

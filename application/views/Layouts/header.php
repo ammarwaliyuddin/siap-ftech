@@ -45,6 +45,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/apex-charts/apex-charts.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/datatables/dataTables.bootstrap4.min.css'); ?>" />
     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>" />
+    
 
     <!-- Page CSS -->
 
