@@ -63,11 +63,10 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-group"></i
                               ></span>
-                                <select class="form-select" id="pangkat" name="pangkat" aria-label="Default select example">
-                                <option value="">Pilih Pangkat/Golongan</option>
-                                <option value="1" <?php if($pegawai['pangkat'] == '1'){echo "selected";} ?>>Pangkat 1</option>
-                                <option value="2" <?php if($pegawai['pangkat'] == '2'){echo "selected";} ?>>Pangkat 2</option>
-                                <option value="3" <?php if($pegawai['pangkat'] == '3'){echo "selected";} ?>>Pangkat 3</option>
+                                <select class="form-select" id="id_pangkat" name="id_pangkat" aria-label="Default select example">
+                                <?php foreach ($pangkat as $pan) : ?>
+                                <option value="<?php echo $pan->id_pangkat?>"<?php if($pan->id_pangkat == $pegawai['id_pangkat']){echo "selected";} ?>><?php echo $pan->pangkat?> </option>
+                                <?php endforeach; ?> 
                                 </select>
                             </div>
                           </div>
@@ -174,11 +173,10 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-group"></i
                               ></span>
-                              <select class="form-select" id="tipe_pegawai" name="tipe_pegawai" aria-label="Default select example">
-                                <option value="">Pilih Tipe Pegawai</option>
-                                <option value="1" <?php if($pegawai['tipe_pegawai'] == '1'){echo "selected";} ?>>PNS</option>
-                                <option value="2" <?php if($pegawai['tipe_pegawai'] == '2'){echo "selected";} ?>>Honorer</option>
-                                <option value="3" <?php if($pegawai['tipe_pegawai'] == '3'){echo "selected";} ?>>THL</option>
+                              <select class="form-select" id="id_tipe" name="id_tipe" aria-label="Default select example">
+                                <?php foreach ($tipe as $tipe) : ?>
+                                <option value="<?php echo $tipe->id_tipe?>"<?php if($tipe->id_tipe == $pegawai['id_tipe']){echo "selected";} ?>><?php echo $tipe->tipe?> </option>
+                                <?php endforeach; ?> 
                                 </select>
                             </div>
                           </div>
@@ -373,12 +371,10 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-user"></i
                               ></span>
-                              <select class="form-select" id="pendidikan" name="pendidikan" aria-label="Default select example">
-                                <option value="">Pilih Pendidikan</option>
-                                <option value="1" <?php if($pegawai['pendidikan'] == '1'){echo "selected";} ?>>SMA / SMK</option>
-                                <option value="2" <?php if($pegawai['pendidikan'] == '2'){echo "selected";} ?>>Sarjana</option>
-                                <option value="3" <?php if($pegawai['pendidikan'] == '3'){echo "selected";} ?>>Magister</option>
-                                <option value="4" <?php if($pegawai['pendidikan'] == '4'){echo "selected";} ?>>Doctor</option>
+                              <select class="form-select" id="id_pendidikan" name="id_pendidikan" aria-label="Default select example">
+                              <?php foreach ($pendidikan as $pk) : ?>
+                                <option value="<?php echo $pk->id_pendidikan?>"<?php if($pk->id_pendidikan == $pegawai['id_pendidikan']){echo "selected";} ?>><?php echo $pk->pendidikan?> </option>
+                                <?php endforeach; ?> 
                                 </select>
                             </div>
                           </div>
@@ -390,12 +386,10 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-user"></i
                               ></span>
-                              <select class="form-select" id="eselon" name="eselon" aria-label="Default select example">
-                                <option value="">Pilih Eselon</option>
-                                <option value="1" <?php if($pegawai['eselon'] == '1'){echo "selected";} ?>>I</option>
-                                <option value="2" <?php if($pegawai['eselon'] == '2'){echo "selected";} ?>>II</option>
-                                <option value="3" <?php if($pegawai['eselon'] == '3'){echo "selected";} ?>>III</option>
-                                <option value="4" <?php if($pegawai['eselon'] == '4'){echo "selected";} ?>>IV</option>
+                              <select class="form-select" id="id_eselon" name="id_eselon" aria-label="Default select example">
+                              <?php foreach ($eselon as $ese) : ?>
+                                <option value="<?php echo $ese->id_eselon?>"<?php if($ese->id_eselon == $pegawai['id_eselon']){echo "selected";} ?>><?php echo $ese->eselon?> </option>
+                                <?php endforeach; ?> 
                                 </select>
                             </div>
                           </div>
@@ -407,12 +401,10 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-user"></i
                               ></span>
-                              <select class="form-select" id="jabatan" name="jabatan" aria-label="Default select example">
-                                <option value="">Pilih Jabatan</option>
-                                <option value="1" <?php if($pegawai['jabatan'] == '1'){echo "selected";} ?>>Kepala Keuangan</option>
-                                <option value="2" <?php if($pegawai['jabatan'] == '2'){echo "selected";} ?>>Kepala Administrasi</option>
-                                <option value="3" <?php if($pegawai['jabatan'] == '3'){echo "selected";} ?>>Kepala Kepegawaian</option>
-                                <option value="4" <?php if($pegawai['jabatan'] == '4'){echo "selected";} ?>>Kepala Dinas</option>
+                              <select class="form-select" id="id_jabatan" name="id_jabatan" aria-label="Default select example">
+                              <?php foreach ($jabatan as $jb) : ?>
+                                <option value="<?php echo $jb->id_jabatan?>"<?php if($jb->id_jabatan == $pegawai['id_jabatan']){echo "selected";} ?>><?php echo $jb->jabatan?> </option>
+                                <?php endforeach; ?> 
                                 </select>
                             </div>
                           </div>
@@ -424,11 +416,10 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-user"></i
                               ></span>
-                              <select class="form-select" id="unit_kerja" name="unit_kerja" aria-label="Default select example">
-                                <option value="">Pilih Unit Kerja</option>
-                                <option value="1" <?php if($pegawai['unit_kerja'] == '1'){echo "selected";} ?>>Keuangan</option>
-                                <option value="2" <?php if($pegawai['unit_kerja'] == '2'){echo "selected";} ?>>Administrasi</option>
-                                <option value="3" <?php if($pegawai['unit_kerja'] == '3'){echo "selected";} ?>>Kepegawaian</option>
+                              <select class="form-select" id="id_unit" name="id_unit" aria-label="Default select example">
+                                <?php foreach ($unit as $un) : ?>
+                                <option value="<?php echo $un->id_unit?>"<?php if($un->id_unit == $pegawai['id_unit']){echo "selected";} ?>><?php echo $un->unit_kerja?> </option>
+                                <?php endforeach; ?> 
                                 </select>
                             </div>
                           </div>

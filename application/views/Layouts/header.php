@@ -162,8 +162,8 @@
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Pelatihan</span></li>
             <!-- Cards -->
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-pelatihan')){ echo 'active';}?>">
+              <a href="<?= base_url('data-pelatihan'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Data Pelatihan</div>
               </a>

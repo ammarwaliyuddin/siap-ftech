@@ -108,7 +108,6 @@
         </div>
     </div>
 
-</div>
     <!-- / Content -->
 <?php $this->load->view('Layouts/footer.php') ?>
 <script>

@@ -11,7 +11,7 @@
                 <!-- Basic Bootstrap Table -->
                 <div class="card p-4">
                     <div class="col-12">
-                        <a href="<?= base_url('tambah-pegawai'); ?>" class="btn btn-primary">Tambah</a>
+                        <a href="<?= base_url('tambah-pelatihan'); ?>" class="btn btn-primary">Tambah</a>
 
                     </div>
                     <div class="col-12 mt-4">
@@ -21,6 +21,7 @@
                             <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Nama Pelatihan</th>
                                 <th>Nama Pegawai</th>
                                 <th>Jam Pelatihan</th>
                                 <th>Tanggal</th>
@@ -31,19 +32,19 @@
                             <tbody class="table-border-bottom-0">
                             <?php
                             $i = 1;
-                            foreach ($pegawai as $d) : ?>
+                            foreach ($pelatihan as $d) : ?>
                                 
                                 <tr>
                                     <th scope="row"><?= $i ?></th>
+                                    <td width="200"><?= $d['nama_pelatihan'] ?></td>
                                     <td width="200"><?= $d['nama_pegawai'] ?></td>
                                     <td width="100"><?= $d['jam_pelatihan'] ?></td>
                                     <td width="300"><?= $d['tanggal'] ?></td>
                                     <td width="300"><?= $d['file'] ?></td>
                                     <td>
-                                    <a href="" class="btn btn-info btn-sm">Detail</a>
-                                    <!-- <a href="<?php echo base_url('ubah-pegawai');?>/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a> -->
-                                    <a href="<?php echo base_url();?>DataPegawaiController/ubahPegawai/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a>
-                                    <button class="btn btn-danger btn-sm button-delete"  data-id_pegawai="<?= $d['id_pegawai']; ?>">Hapus</button>
+                                    <!-- <a href="<?php echo base_url('ubah-pelatihan');?>/<?php echo $d['id_pelatihan'];?>" class="btn btn-secondary btn-sm">Ubah</a> -->
+                                    <a href="<?php echo base_url();?>DataPelatihanController/ubahPelatihan/<?php echo $d['id_pelatihan'];?>" class="btn btn-secondary btn-sm">Ubah</a>
+                                    <button class="btn btn-danger btn-sm button-delete"  data-id_pelatihan="<?= $d['id_pelatihan']; ?>">Hapus</button>
 
                                     </td>
                                 </tr>
@@ -68,7 +69,7 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel1">Hapus Pegawai</h5>
+            <h5 class="modal-title" id="exampleModalLabel1">Hapus Pelatihan</h5>
             <button
                 type="button"
                 class="btn-close"
@@ -83,20 +84,19 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?= base_url('DataPegawaiController/hapus?id_pegawai=')?><?= $d['id_pegawai'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                <a href="<?= base_url('DataPelatihanController/hapus?id_pelatihan=')?><?= $d['id_pelatihan'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
             </div>
             
         </div>
         </div>
     </div>
 
-</div>
     <!-- / Content -->
 <?php $this->load->view('Layouts/footer.php') ?>
 <script>
    $(function() {
         $(".button-delete").on('click',function(){
-            $data = $('.button-delete').data('id_pegawai')
+            $data = $('.button-delete').data('id_pelatihan')
             $("#modal-delete").modal('show');
             // alert($data)
         })

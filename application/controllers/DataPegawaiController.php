@@ -7,12 +7,26 @@ class DataPegawaiController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('PegawaiModel');
+		$this->load->model('EselonModel');
+		$this->load->model('JabatanModel');
+		$this->load->model('PangkatModel');
+		$this->load->model('PendidikanModel');
+		$this->load->model('TipeModel');
+		$this->load->model('UnitModel');
 		$this->load->library('form_validation');
 		$this->load->library('session');
 	}
 	public function dataPegawai()
 	{
         $data['pegawai']=$this->PegawaiModel->getAllPegawai()->result_array();
+
+        $data['eselon']=$this->EselonModel->getAllEselon()->result();
+        $data['jabatan']=$this->JabatanModel->getAllJabatan()->result();
+        $data['pangkat']=$this->PangkatModel->getAllPangkat()->result();
+        $data['pendidikan']=$this->PendidikanModel->getAllPendidikan()->result();
+        $data['tipe']=$this->TipeModel->getAllTipe()->result();
+        $data['unit']=$this->UnitModel->getAllUnit()->result();
+
 		$this->load->view('data_pegawai/list',$data);
 	}
 
@@ -21,6 +35,13 @@ class DataPegawaiController extends CI_Controller {
 		// $this->load->view('data_pegawai/tambah');
 
 		$data['pegawai']=$this->PegawaiModel->getAllPegawai()->result_array();
+
+        $data['eselon']=$this->EselonModel->getAllEselon()->result();
+        $data['jabatan']=$this->JabatanModel->getAllJabatan()->result();
+        $data['pangkat']=$this->PangkatModel->getAllPangkat()->result();
+        $data['pendidikan']=$this->PendidikanModel->getAllPendidikan()->result();
+        $data['tipe']=$this->TipeModel->getAllTipe()->result();
+        $data['unit']=$this->UnitModel->getAllUnit()->result();
 		
 		$this->form_validation->set_rules('nama_pegawai', 'Nama Pegawai', 'required|trim',
                 array(
@@ -58,7 +79,15 @@ class DataPegawaiController extends CI_Controller {
 
     public function ubahPegawai($id)
     {
-        $data['pegawai']=$this->PegawaiModel->getPegawaiById($id);
+
+        $data['eselon']=$this->EselonModel->getAllEselon()->result();
+        $data['jabatan']=$this->JabatanModel->getAllJabatan()->result();
+        $data['pangkat']=$this->PangkatModel->getAllPangkat()->result();
+        $data['pendidikan']=$this->PendidikanModel->getAllPendidikan()->result();
+        $data['tipe']=$this->TipeModel->getAllTipe()->result();
+        $data['unit']=$this->UnitModel->getAllUnit()->result();
+
+        $data['pegawai']=$this->PegawaiModel->getPegawaiById($id)->row_array();
 
         $this->form_validation->set_rules('nama_pegawai', 'Nama Pegawai', 'required|trim',
                 array(

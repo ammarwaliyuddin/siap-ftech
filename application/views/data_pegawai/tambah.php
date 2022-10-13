@@ -61,11 +61,11 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-group"></i
                               ></span>
-                                <select class="form-select" id="pangkat" name="pangkat" aria-label="Default select example">
+                                <select class="form-select" id="id_pangkat" name="id_pangkat" aria-label="Default select example">
                                 <option value="">Pilih Pangkat/Golongan</option>
-                                <option value="1">Pangkat 1</option>
-                                <option value="2">Pangkat 2</option>
-                                <option value="3">Pangkat 3</option>
+                                <?php foreach ($pangkat as $pan) : ?>
+                                <option value="<?php echo $pan->id_pangkat?>"><?php echo $pan->pangkat?></option>
+                                <?php endforeach; ?>
                                 </select>
                             </div>
                           </div>
@@ -172,11 +172,11 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-group"></i
                               ></span>
-                              <select class="form-select" id="tipe_pegawai" name="tipe_pegawai" aria-label="Default select example">
+                              <select class="form-select" id="id_tipe" name="id_tipe" aria-label="Default select example">
                                 <option value="">Pilih Tipe Pegawai</option>
-                                <option value="1">PNS</option>
-                                <option value="2">Honorer</option>
-                                <option value="3">THL</option>
+                                <?php foreach ($tipe as $tip) : ?>
+                                <option value="<?php echo $tip->id_tipe?>"><?php echo $tip->tipe?></option>
+                                <?php endforeach; ?>
                                 </select>
                             </div>
                           </div>
@@ -370,12 +370,11 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-user"></i
                               ></span>
-                              <select class="form-select" id="pendidikan" name="pendidikan" aria-label="Default select example">
+                              <select class="form-select" id="id_pendidikan" name="id_pendidikan" aria-label="Default select example">
                                 <option value="">Pilih Pendidikan</option>
-                                <option value="1">SMA / SMK</option>
-                                <option value="2">Sarjana</option>
-                                <option value="3">Magister</option>
-                                <option value="4">Doctor</option>
+                                <?php foreach ($pendidikan as $pk) : ?>
+                                <option value="<?php echo $pk->id_pendidikan?>"><?php echo $pk->pendidikan?></option>
+                                <?php endforeach; ?>
                                 </select>
                             </div>
                           </div>
@@ -387,12 +386,11 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-user"></i
                               ></span>
-                              <select class="form-select" id="eselon" name="eselon" aria-label="Default select example">
+                              <select class="form-select" id="id_eselon" name="id_eselon" aria-label="Default select example">
                                 <option value="">Pilih Eselon</option>
-                                <option value="1">I</option>
-                                <option value="2">II</option>
-                                <option value="3">III</option>
-                                <option value="4">IV</option>
+                                <?php foreach ($eselon as $ese) : ?>
+                                <option value="<?php echo $ese->id_eselon?>"><?php echo $ese->eselon?></option>
+                                <?php endforeach; ?>
                                 </select>
                             </div>
                           </div>
@@ -404,12 +402,11 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-user"></i
                               ></span>
-                              <select class="form-select" id="jabatan" name="jabatan" aria-label="Default select example">
+                              <select class="form-select" id="id_jabatan" name="id_jabatan" aria-label="Default select example">
                                 <option value="">Pilih Jabatan</option>
-                                <option value="1">Kepala Keuangan</option>
-                                <option value="2">Kepala Administrasi</option>
-                                <option value="3">Kepala Kepegawaian</option>
-                                <option value="4">Kepala Dinas</option>
+                                <?php foreach ($jabatan as $jb) : ?>
+                                <option value="<?php echo $jb->id_jabatan?>"><?php echo $jb->jabatan?></option>
+                                <?php endforeach; ?>
                                 </select>
                             </div>
                           </div>
@@ -421,11 +418,11 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-user"></i
                               ></span>
-                              <select class="form-select" id="unit_kerja" name="unit_kerja" aria-label="Default select example">
+                              <select class="form-select" id="id_unit" name="id_unit" aria-label="Default select example">
                                 <option value="">Pilih Unit Kerja</option>
-                                <option value="1">Keuangan</option>
-                                <option value="2">Administrasi</option>
-                                <option value="3">Kepegawaian</option>
+                                <?php foreach ($unit as $un) : ?>
+                                <option value="<?php echo $un->id_unit?>"><?php echo $un->unit_kerja?></option>
+                                <?php endforeach; ?>
                                 </select>
                             </div>
                           </div>
