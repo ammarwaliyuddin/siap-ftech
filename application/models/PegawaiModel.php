@@ -13,13 +13,33 @@ class PegawaiModel extends CI_model
 	
     public function getAllPegawai()
     {
-        $q = $this->db->query("SELECT * FROM tbl_pegawai ORDER BY nama_pegawai ASC ");
+        $q = $this->db->query("SELECT * FROM tbl_pegawai , tbl_eselon , tbl_jabatan , tbl_pangkat , tbl_pendidikan , tbl_tipe , tbl_unit
+		WHERE tbl_pegawai.id_eselon = tbl_eselon.id_eselon
+		AND tbl_pegawai.id_jabatan = tbl_jabatan.id_jabatan
+		AND tbl_pegawai.id_pangkat = tbl_pangkat.id_pangkat
+		AND tbl_pegawai.id_pendidikan = tbl_pendidikan.id_pendidikan
+		AND tbl_pegawai.id_tipe = tbl_tipe.id_tipe
+		ANd tbl_pegawai.id_unit = tbl_unit.id_unit 
+		ORDER BY nama_pegawai ASC ");
 		return $q;
     }
 
-    public function getPegawaiById($id)
+    // public function getPegawaiById($id)
+	// {
+	// 	return $this->db->get_where('tbl_pegawai' , ['id_pegawai' => $id])->row_array();
+	// }
+
+	public function getPegawaiById($id)
 	{
-		return $this->db->get_where('tbl_pegawai' , ['id_pegawai' => $id])->row_array();
+		$q = $this->db->query("SELECT * FROM tbl_pegawai , tbl_eselon , tbl_jabatan , tbl_pangkat , tbl_pendidikan , tbl_tipe , tbl_unit 
+								WHERE tbl_pegawai.id_eselon = tbl_eselon.id_eselon
+		AND tbl_pegawai.id_jabatan = tbl_jabatan.id_jabatan
+		AND tbl_pegawai.id_pangkat = tbl_pangkat.id_pangkat
+		AND tbl_pegawai.id_pendidikan = tbl_pendidikan.id_pendidikan
+		AND tbl_pegawai.id_tipe = tbl_tipe.id_tipe
+		AND tbl_pegawai.id_unit = tbl_unit.id_unit
+		AND tbl_pegawai.id_pegawai ='$id' ");
+		return $q;
 	}
 
     public function tambahdata ($data,$foto)
@@ -27,13 +47,13 @@ class PegawaiModel extends CI_model
         $data = [
 			"nama_pegawai" => $this->input->post('nama_pegawai',true),
 			"nip" => $this->input->post('nip',true),
-			"pangkat" => $this->input->post('pangkat',true),
+			"id_pangkat" => $this->input->post('id_pangkat',true),
 			"tmt" => $this->input->post('tmt',true),
 			"gaji_pokok" => $this->input->post('gaji_pokok',true),
 			"pejabat" => $this->input->post('pejabat',true),
 			"nomor_sk" => $this->input->post('nomor_sk',true),
 			"tanggal_sk" => $this->input->post('tanggal_sk',true),
-			"tipe_pegawai" => $this->input->post('tipe_pegawai',true),
+			"id_tipe" => $this->input->post('id_tipe',true),
 			"nomor_kartu" => $this->input->post('nomor_kartu',true),
 			"tempat_lahir" => $this->input->post('tempat_lahir',true),
 			"tanggal_lahir" => $this->input->post('tanggal_lahir',true),
@@ -44,10 +64,10 @@ class PegawaiModel extends CI_model
 			"no_hp" => $this->input->post('no_hp',true),
 			"email" => $this->input->post('email',true),
 			"password" => $this->input->post('password',true),
-			"eselon" => $this->input->post('eselon',true),
-			"jabatan" => $this->input->post('jabatan',true),
-			"pendidikan" => $this->input->post('pendidikan',true),
-			"unit_kerja" => $this->input->post('unit_kerja',true),
+			"id_eselon" => $this->input->post('id_eselon',true),
+			"id_jabatan" => $this->input->post('id_jabatan',true),
+			"id_pendidikan" => $this->input->post('id_pendidikan',true),
+			"id_unit" => $this->input->post('id_unit',true),
             "foto" => $foto
 		];
 		$this->db->insert('tbl_pegawai', $data);
@@ -58,13 +78,13 @@ class PegawaiModel extends CI_model
         $data = [
 			"nama_pegawai" => $this->input->post('nama_pegawai',true),
 			"nip" => $this->input->post('nip',true),
-			"pangkat" => $this->input->post('pangkat',true),
+			"id_pangkat" => $this->input->post('id_pangkat',true),
 			"tmt" => $this->input->post('tmt',true),
 			"gaji_pokok" => $this->input->post('gaji_pokok',true),
 			"pejabat" => $this->input->post('pejabat',true),
 			"nomor_sk" => $this->input->post('nomor_sk',true),
 			"tanggal_sk" => $this->input->post('tanggal_sk',true),
-			"tipe_pegawai" => $this->input->post('tipe_pegawai',true),
+			"id_tipe" => $this->input->post('id_tipe',true),
 			"nomor_kartu" => $this->input->post('nomor_kartu',true),
 			"tempat_lahir" => $this->input->post('tempat_lahir',true),
 			"tanggal_lahir" => $this->input->post('tanggal_lahir',true),
@@ -75,10 +95,10 @@ class PegawaiModel extends CI_model
 			"no_hp" => $this->input->post('no_hp',true),
 			"email" => $this->input->post('email',true),
 			"password" => $this->input->post('password',true),
-			"eselon" => $this->input->post('eselon',true),
-			"jabatan" => $this->input->post('jabatan',true),
-			"pendidikan" => $this->input->post('pendidikan',true),
-			"unit_kerja" => $this->input->post('unit_kerja',true),
+			"id_eselon" => $this->input->post('id_eselon',true),
+			"id_jabatan" => $this->input->post('id_jabatan',true),
+			"id_pendidikan" => $this->input->post('id_pendidikan',true),
+			"id_unit" => $this->input->post('id_unit',true),
             "foto" => $foto
 		];
         
