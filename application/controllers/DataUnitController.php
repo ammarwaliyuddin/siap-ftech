@@ -18,62 +18,42 @@ class DataUnitController extends CI_Controller {
 
 	public function tambahUnit()
 	{
-
-		$data['unit']=$this->UnitModel->getAllUnit()->result_array();
-		
-		$this->form_validation->set_rules('unit_kerja', 'Unit Kerja', 'required|trim',
-                array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Unit Kerja Tidak Boleh Kosong.</div>'
-                    ));
-
-		if ($this->form_validation->run() == false) {
-				$this->load->view('data_master/unit_kerja/tambah',$data);
-        }  else {
-            $this->UnitModel->tambahdata($data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data Unit Kerja<strong> </strong> berhasil ditambahkan :)
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          </div>');
-            redirect('data-unit');
-        }
+    $unitKerja = $this->input->post('unitKerja');
+    $cekUnit =  $this->UnitModel->cekUnit($unitKerja);
+    if(empty($cekUnit)){
+      $res = $this->UnitModel->tambahdata($unitKerja);
+      echo $res;
+    }else{
+      // status 3 jika data sudah ada di db
+      echo 3;
+      
+    }
+    
 		
 	}
 
-    public function ubahUnit($id)
+    public function ubahUnit()
     {
-        $data['unit']=$this->UnitModel->getUnitById($id);
+      $idUnit = $this->input->post('idUnit');
+      $unitKerja = $this->input->post('unitKerja');
 
-        $this->form_validation->set_rules('unit_kerja', 'Unit Kerja', 'required|trim',
-                array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Unit Kerja Tidak Boleh Kosong.</div>'
-                    ));
+      $cekUnit =  $this->UnitModel->cekUnit($unitKerja);
+
+      if(empty($cekUnit)){
+        $res = $this->UnitModel->ubahdata($idUnit,$unitKerja);
+        echo $res;
+      }else{
+        // status 3 jika data sudah ada di db
+        echo 3;
         
-        if ($this->form_validation->run() == false) {
-				$this->load->view('data_master/unit_kerja/ubah',$data);
-        }  else {
-        $this->UnitModel->ubahdata($data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        Data Unit Kerja berhasil diubah
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      </div>');
-    redirect('data-unit');
-        }
+      }
     }
 
     public function hapus()
 	{
 		$id_unit = $this->input->get('id_unit');
         $this->db->delete('tbl_unit', array('id_unit' => $id_unit));
-        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data Unit Kerja berhasil dihapus
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          </div>');
+        $this->session->set_flashdata('message', 'Data Unit Kerja Berhasil di Hapus');
         redirect('data-unit');
 		
 	}
