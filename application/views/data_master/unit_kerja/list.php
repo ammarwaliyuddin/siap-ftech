@@ -49,7 +49,7 @@
                                     <td width="row"><?= $d['unit_kerja'] ?></td>
                                     <td>
                                     
-                                    <button class="btn btn-secondary btn-sm button-edit"  data-id_unit="<?= $d['id_unit']; ?>" data-unit_kerja="<?= $d['unit_kerja']; ?>">edit</button>
+                                    <button class="btn btn-secondary btn-sm button-edit"  data-id_unit="<?= $d['id_unit']; ?>" data-unit_kerja="<?= $d['unit_kerja']; ?>">Edit</button>
                                     <button class="btn btn-danger btn-sm button-delete"  data-id_unit="<?= $d['id_unit']; ?>">Hapus</button>
 
                                     </td>
@@ -68,8 +68,6 @@
         </div>
     </div>
 
-   
-
     <!-- Delete Modal -->
     <div class="modal fade" id="modal-delete" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -84,13 +82,13 @@
             ></button>
             </div>
             <div class="modal-body">
-                
+                <input type="hidden" id="del-idUnit">
                 <p>Anda yakin ingin menghapus data ?</p>
                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?= base_url('DataUnitController/hapus?id_unit=')?><?= $d['id_unit'] ?>" class="btn btn-primary"><i class="fa fa-trash"></i> Hapus</a>
+                <button type="button" class="btn btn-danger" id="delete-data"><i class="fa fa-trash"></i> Hapus</button>
             </div>
             
         </div>
@@ -197,21 +195,61 @@
    $(function() {
 
         $(".button-delete").on('click',function(){
-            $data = $('.button-delete').data('id_unit')
+            const idUnit = $(this).data('id_unit')
+
+            $("#del-idUnit").val(idUnit)
             $("#modal-delete").modal('show');
             // alert($data)
         })
+        $('#delete-data').on('click', function() {
+            
+            const idUnit = $('#del-idUnit').val();
+
+            $.ajax({
+                type : "POST",
+                url  : "<?= base_url('del-unit') ?>",
+                dataType : "JSON",
+                data : {idUnit:idUnit},
+                success: function(data){
+                    console.log(`data : ${data}`)
+                    if(data == 1){
+                        $("#modal-delete").modal('hide');
+                        Swal.fire({
+                            // position: 'top-end',
+                            icon: 'success',
+                            title: 'Data Unit Kerja Berhasil di Hapus',
+                            showConfirmButton: false,
+                            timer: 1200
+                        })
+                        setTimeout(function() { 
+                            location.reload();
+                        }, 1300);
+                    }else{
+
+                        Swal.fire({
+                            // position: 'top-end',
+                            icon: 'warning',
+                            title: 'Data gagal terhapus',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+
+                    }
+                }
+            })
+     
+	    });
 
         $(".button-edit").on('click',function(){
-            $id_unit = $(this).data('id_unit')
-            $unit_kerja = $(this).data('unit_kerja')
+            id_unit = $(this).data('id_unit')
+            unit_kerja = $(this).data('unit_kerja')
 
-            $("#edit-idUnit").val($id_unit);
-            $("#edit-unitKerja").val($unit_kerja);
+            $("#edit-idUnit").val(id_unit);
+            $("#edit-unitKerja").val(unit_kerja);
 
             // console.log(`unit gan : ${$id_unit}, ${$unit_kerja}`)
             $("#modal-update").modal('show');
-            // alert($data)
+            
         })
 
         $('#update-data').on('click', function() {

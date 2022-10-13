@@ -58,8 +58,8 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'form_validation' ,'session');
-// $autoload['libraries'] = array('database', 'session','form_validation','simple_login');
+// $autoload['libraries'] = array('database', 'form_validation' ,'session');
+$autoload['libraries'] = array('database', 'session','form_validation','simple_login');
 
 /*
 | -------------------------------------------------------------------
@@ -91,8 +91,8 @@ $autoload['drivers'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 // $autoload['helper'] = array();
-// $autoload['helper'] = array('url','form','html');
-$autoload['helper'] = array('url' , 'file');
+$autoload['helper'] = array('url','form','html');
+// $autoload['helper'] = array('url' , 'file');
 
 /*
 | -------------------------------------------------------------------
@@ -135,4 +135,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = array('PegawaiModel');

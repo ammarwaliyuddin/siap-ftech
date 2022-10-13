@@ -126,18 +126,28 @@
               <!-- /Logo -->
               <h4 class="mb-2">Dinas Peternakan Provinsi NTT</h4>
               <p class="mb-4">Sistem Informasi Administrasi Pegawai</p>
+              <div class="status">
+                <?php 
+                    if($this->session->flashdata('sukses')) {
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                      echo '<div class="alert alert-success text-center" role="alert">'.$this->session->flashdata('sukses').'</div>';
+                     
+                    }
+                 ?>
+              </div>
+              
+
+              <div class="mb-3" >
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
-                    placeholder="Masukkan Email Anda"
+                    placeholder="Masukkan Email "
                     autofocus
                   />
+                  <div id="email-required"></div>
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
@@ -148,19 +158,19 @@
                       type="password"
                       id="password"
                       class="form-control"
-                      name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      placeholder="Masukkan Password"
                       aria-describedby="password"
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
+                  <div id="password-required"></div>
                 </div>
                 
                 <div class="mb-3">
-                  <a href="<?= base_url('dashboard'); ?>" class="btn btn-primary d-grid w-100" >Masuk</a>
+                  <button type="button" id="masuk" class="btn btn-primary d-grid w-100" >Masuk</button>
                   <!-- <button class="btn btn-primary d-grid w-100" type="submit">Masuk</button> -->
                 </div>
-              </form>
+              </div>
 
               
             </div>
@@ -193,5 +203,65 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+      $(function() {
+
+        $('#masuk').on('click', function() {
+          
+            
+            const email = $('#email').val();
+            const password = $('#password').val();
+
+            if(!email){
+                el = `<span class="text-danger" >Email Tidak Boleh Kosong</span>`;
+                $("#email-required").empty().html(el);
+                
+            }else if(!password){
+                el = `<span class="text-danger" >Password Tidak Boleh Kosong</span>`;
+                $("#password-required").empty().html(el);
+                
+            }else{
+                $.ajax({
+                    type : "POST",
+                    url  : "<?= base_url('login') ?>",
+                    dataType : "JSON",
+                    data : {email:email,password:password},
+                    beforeSend:function(){
+                      
+                      status = `<div class="alert alert-primary text-center" role="alert"><div class="spinner-border text-white" role="status">
+                                  <span class="visually-hidden">Loading...</span>
+                                </div></div>`;
+                      $(".status").empty().html(status);
+
+                    },
+                    success: function(data){
+                        console.log(`data : ${data}`)
+                       
+                        if(data == 1){
+                            status = `<div class="alert alert-success text-center" role="alert">Berhasil Login</div>`;
+                            $(".status").empty().html(status);
+                          
+                            setTimeout(function() { 
+                              var url = "<?= base_url('dashboard') ?>";
+                              $(location).attr('href',url);
+                            }, 1300);
+                          
+                        }else if(data == 2){
+
+                            status = `<div class="alert alert-danger text-center" role="alert">email atau password anda salah,<br> silakan coba lagi..</div>`;
+                            $(".status").empty().html(status);
+                            $('#password').val("")
+
+                        }
+                    }
+                })
+
+            }
+      
+        });
+            
+
+      });
+    </script>
   </body>
 </html>

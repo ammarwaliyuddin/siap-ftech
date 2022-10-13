@@ -51,10 +51,10 @@ class DataUnitController extends CI_Controller {
 
     public function hapus()
 	{
-		$id_unit = $this->input->get('id_unit');
-        $this->db->delete('tbl_unit', array('id_unit' => $id_unit));
-        $this->session->set_flashdata('message', 'Data Unit Kerja Berhasil di Hapus');
-        redirect('data-unit');
+		    $idUnit = $this->input->post('idUnit');
+
+        $res = $this->db->delete('tbl_unit', array('id_unit' => $idUnit));
+        echo $res;
 		
 	}
 }

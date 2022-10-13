@@ -153,6 +153,7 @@
                     <div data-i18n="Basic">Data Pegawai</div>
                 </a>
             </li>
+            <?php if($this->session->userdata('role')== 'admin'): ?>
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Statistik</span></li>
             <!-- Cards -->
@@ -162,6 +163,7 @@
                 <div data-i18n="Basic">Data Statistik</div>
               </a>
             </li>
+            <?php endif; ?>
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Pelatihan</span></li>
             <!-- Cards -->
@@ -171,7 +173,7 @@
                 <div data-i18n="Basic">Data Pelatihan</div>
               </a>
             </li>
-            
+            <?php if($this->session->userdata('role')== 'admin'): ?>
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Master</span></li>
             <!-- Cards -->
@@ -211,9 +213,8 @@
                 <div data-i18n="Basic">Tipe Pegawai</div>
               </a>
             </li>
+
             
-
-
             <!-- Forms & Tables -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengaturan Akun</span></li>
             <!-- Forms -->
@@ -224,6 +225,8 @@
               </a>
               
             </li>
+            <?php endif ?>
+
            
           </ul>
         </aside>
@@ -269,8 +272,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block"><?= $this->session->userdata('nama_pegawai'); ?></span>
+                            <small class="text-muted"><?= $this->session->userdata('role'); ?></small>
                           </div>
                         </div>
                       </a>
@@ -280,7 +283,7 @@
                     </li>
                     
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="<?= base_url('logout'); ?>">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Keluar</span>
                       </a>

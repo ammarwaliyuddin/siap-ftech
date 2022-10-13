@@ -54,6 +54,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['dashboard'] = 'DashboardController';
 
+$route['login'] = 'AuthController';
+$route['logout'] = 'AuthController/logout';
+
 $route['data-pegawai'] = 'DataPegawaiController/dataPegawai';
 $route['tambah-pegawai'] = 'DataPegawaiController/tambahPegawai';
 $route['ubah-pegawai'] = 'DataPegawaiController/ubahPegawai';
@@ -61,6 +64,7 @@ $route['ubah-pegawai'] = 'DataPegawaiController/ubahPegawai';
 $route['data-unit'] = 'DataUnitController/dataUnit';
 $route['tambah-unit'] = 'DataUnitController/tambahUnit';
 $route['ubah-unit'] = 'DataUnitController/ubahUnit';
+$route['del-unit'] = 'DataUnitController/hapus';
 
 $route['data-pangkat'] = 'DataPangkatController/dataPangkat';
 $route['tambah-pangkat'] = 'DataPangkatController/tambahPangkat';
