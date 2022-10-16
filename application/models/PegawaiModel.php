@@ -63,7 +63,7 @@ class PegawaiModel extends CI_model
 			"alamat" => $this->input->post('alamat',true),
 			"no_hp" => $this->input->post('no_hp',true),
 			"email" => $this->input->post('email',true),
-			"password" => $this->input->post('password',true),
+			"password" => md5($this->input->post('password',true)),
 			"id_eselon" => $this->input->post('id_eselon',true),
 			"id_jabatan" => $this->input->post('id_jabatan',true),
 			"id_pendidikan" => $this->input->post('id_pendidikan',true),

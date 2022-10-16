@@ -22,22 +22,45 @@ class JabatanModel extends CI_model
 		return $this->db->get_where('tbl_jabatan' , ['id_jabatan' => $id])->row_array();
 	}
 
-    public function tambahdata ($data)
+	public function cekJabatan ($data)
     {
-        $data = [
-			"jabatan" => $this->input->post('jabatan',true)
-		];
-		$this->db->insert('tbl_jabatan', $data);
+        return $this->db->get_where('tbl_jabatan' , ['jabatan' => $data])->row_array();
     }
 
-    public function ubahdata($data)
+    // public function tambahdata ($data)
+    // {
+    //     $data = [
+	// 		"jabatan" => $this->input->post('jabatan',true)
+	// 	];
+	// 	$this->db->insert('tbl_jabatan', $data);
+    // }
+
+	public function tambahdata ($data)
     {
         $data = [
-			"jabatan" => $this->input->post('jabatan',true)
+			"jabatan" => $data
+		];
+		return $this->db->insert('tbl_jabatan', $data);
+    }
+
+    // public function ubahdata($data)
+    // {
+    //     $data = [
+	// 		"jabatan" => $this->input->post('jabatan',true)
+	// 	];
+        
+    //     $this->db->where('id_jabatan', $this->input->post('id_jabatan'));
+	// 	$this->db->update('tbl_jabatan', $data);
+    // }
+
+	public function ubahdata($idJabatan,$jabatan)
+    {
+        $data = [
+			"jabatan" => $jabatan
 		];
         
-        $this->db->where('id_jabatan', $this->input->post('id_jabatan'));
-		$this->db->update('tbl_jabatan', $data);
+        $this->db->where('id_jabatan', $idJabatan);
+		return $this->db->update('tbl_jabatan', $data);
     }
 
     public function hapusdata($id)

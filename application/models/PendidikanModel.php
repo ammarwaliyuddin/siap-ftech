@@ -22,22 +22,45 @@ class PendidikanModel extends CI_model
 		return $this->db->get_where('tbl_pendidikan' , ['id_pendidikan' => $id])->row_array();
 	}
 
-    public function tambahdata ($data)
+	public function cekPendidikan ($data)
     {
-        $data = [
-			"pendidikan" => $this->input->post('pendidikan',true)
-		];
-		$this->db->insert('tbl_pendidikan', $data);
+        return $this->db->get_where('tbl_pendidikan' , ['pendidikan' => $data])->row_array();
     }
 
-    public function ubahdata($data)
+    // public function tambahdata ($data)
+    // {
+    //     $data = [
+	// 		"pendidikan" => $this->input->post('pendidikan',true)
+	// 	];
+	// 	$this->db->insert('tbl_pendidikan', $data);
+    // }
+
+	public function tambahdata ($data)
     {
         $data = [
-			"pendidikan" => $this->input->post('pendidikan',true)
+			"pendidikan" => $data
+		];
+		return $this->db->insert('tbl_pendidikan', $data);
+    }
+
+    // public function ubahdata($data)
+    // {
+    //     $data = [
+	// 		"pendidikan" => $this->input->post('pendidikan',true)
+	// 	];
+        
+    //     $this->db->where('id_pendidikan', $this->input->post('id_pendidikan'));
+	// 	$this->db->update('tbl_pendidikan', $data);
+    // }
+
+	public function ubahdata($idPendidikan,$pendidikan)
+    {
+        $data = [
+			"pendidikan" => $pendidikan
 		];
         
-        $this->db->where('id_pendidikan', $this->input->post('id_pendidikan'));
-		$this->db->update('tbl_pendidikan', $data);
+        $this->db->where('id_pendidikan', $idPendidikan);
+		return $this->db->update('tbl_pendidikan', $data);
     }
 
     public function hapusdata($id)

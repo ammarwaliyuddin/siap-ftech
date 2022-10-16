@@ -73,22 +73,27 @@ $route['del-unit'] = 'DataUnitController/hapus';
 $route['data-pangkat'] = 'DataPangkatController/dataPangkat';
 $route['tambah-pangkat'] = 'DataPangkatController/tambahPangkat';
 $route['ubah-pangkat'] = 'DataPangkatController/ubahPangkat';
+$route['del-pangkat'] = 'DataPangkatController/hapus';
 
 $route['data-jabatan'] = 'DataJabatanController/dataJabatan';
 $route['tambah-jabatan'] = 'DataJabatanController/tambahJabatan';
 $route['ubah-jabatan'] = 'DataJabatanController/ubahJabatan';
+$route['del-jabatan'] = 'DatajabatanController/hapus';
 
 $route['data-pendidikan'] = 'DataPendidikanController/dataPendidikan';
 $route['tambah-pendidikan'] = 'DataPendidikanController/tambahPendidikan';
 $route['ubah-pendidikan'] = 'DataPendidikanController/ubahPendidikan';
+$route['del-pendidikan'] = 'DataPendidikanController/hapus';
 
 $route['data-eselon'] = 'DataEselonController/dataEselon';
 $route['tambah-eselon'] = 'DataEselonController/tambahEselon';
 $route['ubah-eselon'] = 'DataEselonController/ubahEselon';
+$route['del-eselon'] = 'DataEselonController/hapus';
 
 $route['data-tipe'] = 'DataTipeController/dataTipe';
 $route['tambah-tipe'] = 'DataTipeController/tambahTipe';
 $route['ubah-tipe'] = 'DataTipeController/ubahTipe';
+$route['del-tipe'] = 'DataTipeController/hapus';
 
 
 // $route['tipe-pegawai'] = 'DataMasterController/tipePegawai';

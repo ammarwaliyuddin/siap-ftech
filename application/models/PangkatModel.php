@@ -22,22 +22,45 @@ class PangkatModel extends CI_model
 		return $this->db->get_where('tbl_pangkat' , ['id_pangkat' => $id])->row_array();
 	}
 
-    public function tambahdata ($data)
+	public function cekPangkat ($data)
     {
-        $data = [
-			"pangkat" => $this->input->post('pangkat',true)
-		];
-		$this->db->insert('tbl_pangkat', $data);
+        return $this->db->get_where('tbl_pangkat' , ['pangkat' => $data])->row_array();
     }
 
-    public function ubahdata($data)
+    // public function tambahdata ($data)
+    // {
+    //     $data = [
+	// 		"pangkat" => $this->input->post('pangkat',true)
+	// 	];
+	// 	$this->db->insert('tbl_pangkat', $data);
+    // }
+
+	public function tambahdata ($data)
     {
         $data = [
-			"pangkat" => $this->input->post('pangkat',true)
+			"pangkat" => $data
+		];
+		return $this->db->insert('tbl_pangkat', $data);
+    }
+
+    // public function ubahdata($data)
+    // {
+    //     $data = [
+	// 		"pangkat" => $this->input->post('pangkat',true)
+	// 	];
+        
+    //     $this->db->where('id_pangkat', $this->input->post('id_pangkat'));
+	// 	$this->db->update('tbl_pangkat', $data);
+    // }
+
+	public function ubahdata($idPangkat,$pangkat)
+    {
+        $data = [
+			"pangkat" => $pangkat
 		];
         
-        $this->db->where('id_pangkat', $this->input->post('id_pangkat'));
-		$this->db->update('tbl_pangkat', $data);
+        $this->db->where('id_pangkat', $idPangkat);
+		return $this->db->update('tbl_pangkat', $data);
     }
 
     public function hapusdata($id)

@@ -22,22 +22,43 @@ class TipeModel extends CI_model
 		return $this->db->get_where('tbl_tipe' , ['id_tipe' => $id])->row_array();
 	}
 
+	public function cekTipe ($data)
+    {
+        return $this->db->get_where('tbl_tipe' , ['tipe' => $data])->row_array();
+    }
+
+    // public function tambahdata ($data)
+    // {
+    //     $data = [
+	// 		"tipe" => $this->input->post('tipe',true)
+	// 	];
+	// 	$this->db->insert('tbl_tipe', $data);
+    // }
     public function tambahdata ($data)
     {
         $data = [
-			"tipe" => $this->input->post('tipe',true)
+			"tipe" => $data
 		];
-		$this->db->insert('tbl_tipe', $data);
+		return $this->db->insert('tbl_tipe', $data);
     }
 
-    public function ubahdata($data)
+    // public function ubahdata($data)
+    // {
+    //     $data = [
+	// 		"tipe" => $this->input->post('tipe',true)
+	// 	];
+        
+    //     $this->db->where('id_tipe', $this->input->post('id_tipe'));
+	// 	$this->db->update('tbl_tipe', $data);
+    // }
+    public function ubahdata($idTipe,$tipe)
     {
         $data = [
-			"tipe" => $this->input->post('tipe',true)
+			"tipe" => $tipe
 		];
         
-        $this->db->where('id_tipe', $this->input->post('id_tipe'));
-		$this->db->update('tbl_tipe', $data);
+        $this->db->where('id_tipe', $idTipe);
+		return $this->db->update('tbl_tipe', $data);
     }
 
     public function hapusdata($id)

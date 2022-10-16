@@ -16,65 +16,105 @@ class DataTipeController extends CI_Controller {
 		$this->load->view('data_master/tipe/list',$data);
 	}
 
-	public function tambahTipe()
+	// public function tambahTipe()
+	// {
+
+	// 	$data['tipe']=$this->TipeModel->getAllTipe()->result_array();
+		
+	// 	$this->form_validation->set_rules('tipe', 'Tipe Pegawai', 'required|trim',
+  //               array(
+  //                   'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tipe Pegawai Tidak Boleh Kosong.</div>'
+  //                   ));
+
+	// 	if ($this->form_validation->run() == false) {
+	// 			$this->load->view('data_master/tipe/tambah',$data);
+  //       }  else {
+  //           $this->TipeModel->tambahdata($data);
+  //           $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  //           Data Tipe Pegawai<strong> </strong> berhasil ditambahkan :)
+  //           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  //           <span aria-hidden="true">&times;</span>
+  //         </button>
+  //         </div>');
+  //           redirect('data-tipe');
+  //       }
+		
+	// }
+
+  public function tambahTipe()
 	{
-
-		$data['tipe']=$this->TipeModel->getAllTipe()->result_array();
-		
-		$this->form_validation->set_rules('tipe', 'Tipe Pegawai', 'required|trim',
-                array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tipe Pegawai Tidak Boleh Kosong.</div>'
-                    ));
-
-		if ($this->form_validation->run() == false) {
-				$this->load->view('data_master/tipe/tambah',$data);
-        }  else {
-            $this->TipeModel->tambahdata($data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data Tipe Pegawai<strong> </strong> berhasil ditambahkan :)
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          </div>');
-            redirect('data-tipe');
-        }
-		
+    $tipe = $this->input->post('tipe');
+    $cekTipe =  $this->TipeModel->cekTipe($tipe);
+    if(empty($cekTipe)){
+      $res = $this->TipeModel->tambahdata($tipe);
+      echo $res;
+    }else{
+      // status 3 jika data sudah ada di db
+      echo 3;
+      
+    }	
 	}
 
-    public function ubahTipe($id)
-    {
-        $data['tipe']=$this->TipeModel->getTipeById($id);
+    // public function ubahTipe($id)
+    // {
+    //     $data['tipe']=$this->TipeModel->getTipeById($id);
 
-        $this->form_validation->set_rules('tipe', 'Tipe Pegawai', 'required|trim',
-                array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tipe Pegawai Tidak Boleh Kosong.</div>'
-                    ));
+    //     $this->form_validation->set_rules('tipe', 'Tipe Pegawai', 'required|trim',
+    //             array(
+    //                 'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tipe Pegawai Tidak Boleh Kosong.</div>'
+    //                 ));
         
-        if ($this->form_validation->run() == false) {
-				$this->load->view('data_master/tipe/ubah',$data);
-        }  else {
-        $this->TipeModel->ubahdata($data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        Data Tipe Pegawai berhasil diubah
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      </div>');
-    redirect('data-tipe');
-        }
+    //     if ($this->form_validation->run() == false) {
+		// 		$this->load->view('data_master/tipe/ubah',$data);
+    //     }  else {
+    //     $this->TipeModel->ubahdata($data);
+    //     $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    //     Data Tipe Pegawai berhasil diubah
+    //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //     <span aria-hidden="true">&times;</span>
+    //   </button>
+    //   </div>');
+    // redirect('data-tipe');
+    //     }
+    // }
+
+    public function ubahTipe()
+    {
+      $idTipe = $this->input->post('idTipe');
+      $tipe = $this->input->post('tipe');
+
+      $cekTipe =  $this->TipeModel->cekTipe($tipe);
+
+      if(empty($cekTipe)){
+        $res = $this->TipeModel->ubahdata($idTipe,$tipe);
+        echo $res;
+      }else{
+        // status 3 jika data sudah ada di db
+        echo 3;
+        
+      }
     }
 
-    public function hapus()
+  //   public function hapus()
+	// {
+	// 	$id_tipe = $this->input->get('id_tipe');
+  //       $this->db->delete('tbl_tipe', array('id_tipe' => $id_tipe));
+  //       $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  //           Data Tipe Pegawai berhasil dihapus
+  //           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  //           <span aria-hidden="true">&times;</span>
+  //         </button>
+  //         </div>');
+  //       redirect('data-tipe');
+		
+	// }
+
+  public function hapus()
 	{
-		$id_tipe = $this->input->get('id_tipe');
-        $this->db->delete('tbl_tipe', array('id_tipe' => $id_tipe));
-        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data Tipe Pegawai berhasil dihapus
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          </div>');
-        redirect('data-tipe');
+    $idTipe = $this->input->post('idTipe');
+
+    $res = $this->db->delete('tbl_tipe', array('id_tipe' => $idTipe));
+    echo $res;
 		
 	}
 }
