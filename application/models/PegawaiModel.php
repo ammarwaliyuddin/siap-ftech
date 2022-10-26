@@ -19,7 +19,7 @@ class PegawaiModel extends CI_model
 		AND tbl_pegawai.id_pangkat = tbl_pangkat.id_pangkat
 		AND tbl_pegawai.id_pendidikan = tbl_pendidikan.id_pendidikan
 		AND tbl_pegawai.id_tipe = tbl_tipe.id_tipe
-		ANd tbl_pegawai.id_unit = tbl_unit.id_unit 
+		ANd tbl_pegawai.id_unit = tbl_unit.id_unit
 		ORDER BY nama_pegawai ASC ");
 		return $q;
     }
@@ -68,7 +68,8 @@ class PegawaiModel extends CI_model
 			"id_jabatan" => $this->input->post('id_jabatan',true),
 			"id_pendidikan" => $this->input->post('id_pendidikan',true),
 			"id_unit" => $this->input->post('id_unit',true),
-            "foto" => $foto
+            "foto" => $foto,
+			"role" => 'pegawai'
 		];
 		$this->db->insert('tbl_pegawai', $data);
     }

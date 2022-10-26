@@ -10,13 +10,12 @@
             <div class="d-flex align-items-end row">
                 <div class="col-sm-7">
                 <div class="card-body">
-                    <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                    <h5 class="card-title text-primary">Welcome <?= $this->session->userdata('nama_pegawai') ?> 🎉</h5>
                     <p class="mb-4">
-                    You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                    your profile.
+                   Semoga Hari mu menyenangkan !!!
                     </p>
 
-                    <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+                    <!-- <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a> -->
                 </div>
                 </div>
                 <div class="col-sm-5 text-center text-sm-left">
@@ -39,7 +38,7 @@
                     <div class="card-title d-flex align-items-start justify-content-between">
                     <div class="avatar flex-shrink-0">
                         <img
-                        src="../assets/img/icons/unicons/chart-success.png"
+                        src="<?= base_url('assets/img/icons/unicons/chart-success.png'); ?>"
                         alt="chart success"
                         class="rounded"
                         />
@@ -198,7 +197,7 @@
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
                     <div class="avatar flex-shrink-0">
-                        <img src="../assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                        <img src="<?= base_url('assets/img/icons/unicons/cc-primary.png'); ?>" alt="Credit Card" class="rounded" />
                     </div>
                     <div class="dropdown">
                         <button
@@ -439,7 +438,7 @@
                 <ul class="p-0 m-0">
                 <li class="d-flex mb-4 pb-1">
                     <div class="avatar flex-shrink-0 me-3">
-                    <img src="../assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
+                    <img src="<?= base_url('assets/img/icons/unicons/paypal.png'); ?>" alt="User" class="rounded" />
                     </div>
                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                     <div class="me-2">

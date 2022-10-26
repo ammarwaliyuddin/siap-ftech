@@ -30,10 +30,11 @@ class Simple_login {
 
       if($query->num_rows() == 1) {
           //ambil data user berdasar email
-          $row  = $this->CI->db->query('SELECT id_pegawai,nama_pegawai,role FROM tbl_pegawai where email = "'.$email.'"');
+          $row  = $this->CI->db->query('SELECT id_pegawai,nama_pegawai,role,foto FROM tbl_pegawai where email = "'.$email.'"');
           $admin     = $row->row();
           $id   = $admin->id_pegawai;
           $role   = $admin->role;
+          $foto   = $admin->foto;
           $nama_pegawai   = $admin->nama_pegawai;
 
           //set session user
@@ -42,6 +43,7 @@ class Simple_login {
           $this->CI->session->set_userdata('id_login', uniqid(rand()));
           $this->CI->session->set_userdata('id', $id);
           $this->CI->session->set_userdata('role', $role);
+          $this->CI->session->set_userdata('foto', $foto);
 
           //redirect ke halaman dashboard
           echo 1;
@@ -94,6 +96,7 @@ class Simple_login {
       $this->CI->session->unset_userdata('nama_pegawai');
       $this->CI->session->unset_userdata('id');
       $this->CI->session->unset_userdata('role');
+      $this->CI->session->unset_userdata('foto');
       $this->CI->session->set_flashdata('sukses','Anda berhasil logout');
       redirect(base_url('/'));
   }

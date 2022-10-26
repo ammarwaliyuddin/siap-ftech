@@ -18,7 +18,12 @@ class DataPegawaiController extends CI_Controller {
 	}
 	public function dataPegawai()
 	{
-        $data['pegawai']=$this->PegawaiModel->getAllPegawai()->result_array();
+        if($this->session->userdata('role') == 'admin'){
+            $data['pegawai']=$this->PegawaiModel->getAllPegawai()->result_array();
+        }else{
+            $data['pegawai']=$this->PegawaiModel->getPegawaiById($this->session->userdata('id'))->result_array();
+
+        }
 
         $data['eselon']=$this->EselonModel->getAllEselon()->result();
         $data['jabatan']=$this->JabatanModel->getAllJabatan()->result();

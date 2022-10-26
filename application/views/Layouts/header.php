@@ -216,15 +216,15 @@
 
             
             <!-- Forms & Tables -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengaturan Akun</span></li>
+            <!-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengaturan Akun</span></li> -->
             <!-- Forms -->
-            <li class="menu-item">
+            <!-- <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Elements">Pengaturan Akun</div>
               </a>
               
-            </li>
+            </li> -->
             <?php endif ?>
 
            
