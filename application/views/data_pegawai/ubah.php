@@ -17,6 +17,21 @@
                     <input type="hidden" name="id_pegawai" id="id_pegawai" value="<?php echo $pegawai['id_pegawai'];?>">
                     <div class="card-body">
                       <form>
+                      <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tipe Pegawai</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-group"></i
+                              ></span>
+                              <select class="form-select" id="id_tipe" name="id_tipe" aria-label="Default select example">
+                                <?php foreach ($tipe as $tipe) : ?>
+                                <option value="<?php echo $tipe->id_tipe?>"<?php if($tipe->id_tipe == $pegawai['id_tipe']){echo "selected";} ?>><?php echo $tipe->tipe?> </option>
+                                <?php endforeach; ?> 
+                                </select>
+                            </div>
+                          </div>
+                        </div>
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama Pegawai</label>
                           <div class="col-sm-10">
@@ -166,21 +181,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tipe Pegawai</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-group"></i
-                              ></span>
-                              <select class="form-select" id="id_tipe" name="id_tipe" aria-label="Default select example">
-                                <?php foreach ($tipe as $tipe) : ?>
-                                <option value="<?php echo $tipe->id_tipe?>"<?php if($tipe->id_tipe == $pegawai['id_tipe']){echo "selected";} ?>><?php echo $tipe->tipe?> </option>
-                                <?php endforeach; ?> 
-                                </select>
-                            </div>
-                          </div>
-                        </div>
+                        
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nomor Kartu Pegawai</label>
                           <div class="col-sm-10">

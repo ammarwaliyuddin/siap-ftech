@@ -22,22 +22,35 @@ class EselonModel extends CI_model
 		return $this->db->get_where('tbl_eselon' , ['id_eselon' => $id])->row_array();
 	}
 
-    public function tambahdata ($data)
+	public function cekEselon ($data)
     {
-        $data = [
-			"eselon" => $this->input->post('eselon',true)
-		];
-		$this->db->insert('tbl_eselon', $data);
+        return $this->db->get_where('tbl_eselon' , ['eselon' => $data])->row_array();
     }
 
-    public function ubahdata($data)
+    // public function tambahdata ($data)
+    // {
+    //     $data = [
+	// 		"eselon" => $this->input->post('eselon',true)
+	// 	];
+	// 	$this->db->insert('tbl_eselon', $data);
+    // }
+
+	public function tambahdata ($data)
     {
         $data = [
-			"eselon" => $this->input->post('eselon',true)
+			"eselon" => $data
+		];
+		return $this->db->insert('tbl_eselon', $data);
+    }
+
+    public function ubahdata($idEselon,$eselon)
+    {
+        $data = [
+			"eselon" => $eselon
 		];
         
-        $this->db->where('id_eselon', $this->input->post('id_eselon'));
-		$this->db->update('tbl_eselon', $data);
+        $this->db->where('id_eselon', $idEselon);
+		return $this->db->update('tbl_eselon', $data);
     }
 
     public function hapusdata($id)

@@ -47,6 +47,94 @@ class DataPegawaiController extends CI_Controller {
                 array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nama Pegawai Tidak Boleh Kosong.</div>'
                     ));
+		$this->form_validation->set_rules('nip', 'NIP', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> NIP Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('id_pangkat', 'Pangkat', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pangkat Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tmt', 'TMT', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> TMT Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('gaji_pokok', 'Gaji Pokok', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Gaji Pokok Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('pejabat', 'Pejabat', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pejabat Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('nomor_sk', 'Nomor SK', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tanggal_sk', 'Tanggal SK', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('id_tipe', 'Tipe Pegawai', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tipe Pegawai Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('nomor_kartu', 'Nomor Kartu', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor Kartu Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tempat Lahir Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> TMT Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Jenis Kelamin Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('agama', 'Agama', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Agama Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('status_nikah', 'Status Nikah', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Status Nikah Tidak Boleh Kosong.</div>'
+                    ));
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Alamat Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('no_hp', 'No HP', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> No HP Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('email', 'Email', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Email Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('password', 'Password', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Password Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('id_eselon', 'Eselon', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Eselon Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('id_jabatan', 'Jabatan', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Jabatan Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('id_pendidikan', 'Pendidikan', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pendidikan Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('id_unit', 'Unit Kerja', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Unit Kerja Tidak Boleh Kosong.</div>'
+                    ));            
 
 		if ($this->form_validation->run() == false) {
 				$this->load->view('data_pegawai/tambah',$data);
@@ -92,6 +180,94 @@ class DataPegawaiController extends CI_Controller {
         $this->form_validation->set_rules('nama_pegawai', 'Nama Pegawai', 'required|trim',
                 array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nama Pegawai Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('nip', 'NIP', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> NIP Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('id_pangkat', 'Pangkat', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pangkat Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tmt', 'TMT', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> TMT Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('gaji_pokok', 'Gaji Pokok', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Gaji Pokok Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('pejabat', 'Pejabat', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pejabat Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('nomor_sk', 'Nomor SK', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tanggal_sk', 'Tanggal SK', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('id_tipe', 'Tipe Pegawai', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tipe Pegawai Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('nomor_kartu', 'Nomor Kartu', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor Kartu Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tempat Lahir Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> TMT Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Jenis Kelamin Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('agama', 'Agama', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Agama Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('status_nikah', 'Status Nikah', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Status Nikah Tidak Boleh Kosong.</div>'
+                    ));
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Alamat Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('no_hp', 'No HP', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> No HP Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('email', 'Email', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Email Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('password', 'Password', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Password Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('id_eselon', 'Eselon', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Eselon Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('id_jabatan', 'Jabatan', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Jabatan Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('id_pendidikan', 'Pendidikan', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pendidikan Tidak Boleh Kosong.</div>'
+                    ));            
+        $this->form_validation->set_rules('id_unit', 'Unit Kerja', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Unit Kerja Tidak Boleh Kosong.</div>'
                     ));
         
         if ($this->form_validation->run() == false) {
