@@ -11,8 +11,9 @@
                 <!-- Basic Bootstrap Table -->
                 <div class="card p-4">
                     <div class="col-12">
-                        <a href="<?= base_url('tambah-pegawai'); ?>" class="btn btn-primary">Tambah</a>
-
+                        <?php if($this->session->userdata('role') == 'admin'): ?>
+                            <a href="<?= base_url('tambah-pegawai'); ?>" class="btn btn-primary">Tambah</a>
+                        <?php endif; ?>
                     </div>
                     <div class="col-12 mt-4">
 
