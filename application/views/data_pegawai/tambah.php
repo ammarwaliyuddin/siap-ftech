@@ -29,6 +29,7 @@
                                 <option value="<?php echo $tip->id_tipe?>"><?php echo $tip->tipe?></option>
                                 <?php endforeach; ?>
                                 </select>
+                                <?= form_error('id_tipe', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -68,6 +69,7 @@
                                 aria-label="Masukkan NIP"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('nip', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -84,6 +86,7 @@
                                 <option value="<?php echo $pan->id_pangkat?>"><?php echo $pan->pangkat?></option>
                                 <?php endforeach; ?>
                                 </select>
+                                <?= form_error('id_pangkat', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -103,6 +106,7 @@
                                 aria-label="Masukkan TMT"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('tmt', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -122,30 +126,12 @@
                                 aria-label="Masukkan Gaji pokok"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('gaji_pokok', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK ( Pejabat )</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-user"></i
-                              ></span>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="pejabat"
-                                name="pejabat"
-                                placeholder="Masukkan SK Pejabat"
-                                aria-label="Masukkan SK Pejabat"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK ( No SK )</label>
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK CPNS (No SK)</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                               <span id="basic-icon-default-fullname2" class="input-group-text"
@@ -154,17 +140,18 @@
                               <input
                                 type="text"
                                 class="form-control"
-                                id="nomor_sk"
-                                name="nomor_sk"
-                                placeholder="Masukkan nomor SK"
-                                aria-label="Masukkan nomor SK"
+                                id="nomor_skcpns"
+                                name="nomor_skcpns"
+                                placeholder="Masukkan nomor SK CPNS"
+                                aria-label="Masukkan nomor SK CPNS"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('nomor_skcpns', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK ( Tanggal SK )</label>
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK CPNS (Tanggal SK)</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                               <span id="basic-icon-default-fullname2" class="input-group-text"
@@ -173,12 +160,93 @@
                               <input
                                 type="date"
                                 class="form-control"
-                                id="tanggal_sk"
-                                name="tanggal_sk"
-                                placeholder="Pilih tanggal SK"
-                                aria-label="Pilih tanggal SK"
+                                id="tanggal_skcpns"
+                                name="tanggal_skcpns"
+                                placeholder="Pilih tanggal SK CPNS"
+                                aria-label="Pilih tanggal SK CPNS"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('tanggal_skcpns', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK PNS (No SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-task"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nomor_skpns"
+                                name="nomor_skpns"
+                                placeholder="Masukkan nomor SK PNS"
+                                aria-label="Masukkan nomor SK PNS"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('nomor_skpns', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK PNS (Tanggal SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-calendar"></i
+                              ></span>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="tanggal_skpns"
+                                name="tanggal_skpns"
+                                placeholder="Pilih tanggal SK PNS"
+                                aria-label="Pilih tanggal SK PNS"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('tanggal_skpns', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK Pangkat Terakhir (No SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-task"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nomor_skterakhir"
+                                name="nomor_skterakhir"
+                                placeholder="Masukkan nomor SK Pangkat Terakhir"
+                                aria-label="Masukkan nomor SK Pangkat Terakhir"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('nomor_skterakhir', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK Pangkat Terakhir (Tanggal SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-calendar"></i
+                              ></span>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="tanggal_skterakhir"
+                                name="tanggal_skterakhir"
+                                placeholder="Pilih tanggal SK Pangkat Terakhir"
+                                aria-label="Pilih tanggal SK Pangkat Terakhir"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('tanggal_skterakhir', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -199,6 +267,7 @@
                                 aria-label="Masukkan Nomor Kartu Pegawai"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('nomor_kartu', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -218,6 +287,7 @@
                                 aria-label="Masukkan Tempat Lahir"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('tempat_lahir', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -237,6 +307,7 @@
                                 aria-label="Pilih tanggal lahir"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('tanggal_lahir', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -252,6 +323,7 @@
                                 <option value="1">Pria</option>
                                 <option value="2">Wanita</option>
                                 </select>
+                                <?= form_error('jk', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -271,6 +343,7 @@
                                 <option value="5">Buddha</option>
                                 <option value="6">Konghucu</option>
                                 </select>
+                                <?= form_error('agama', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -287,6 +360,7 @@
                                 <option value="2">Belum Menikah</option>
                                 <option value="3">Duda / Janda</option>
                                 </select>
+                                <?= form_error('status_nikah', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -305,6 +379,7 @@
                                 aria-label="Masukkan Alamat"
                                 aria-describedby="basic-icon-default-message2"
                               ></textarea>
+                              <?= form_error('alamat', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -324,6 +399,7 @@
                                 aria-label="Masukkan No HP"
                                 aria-describedby="basic-icon-default-phone2"
                               />
+                              <?= form_error('no_hp', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -342,6 +418,7 @@
                                 aria-describedby="basic-icon-default-email2"
                               />
                               <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
+                              <?= form_error('email', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                             <div class="form-text">You can use letters, numbers & periods</div>
                           </div>
@@ -362,6 +439,7 @@
                                 aria-label="Masukkan Password"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('password', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -378,6 +456,7 @@
                                 <option value="<?php echo $pk->id_pendidikan?>"><?php echo $pk->pendidikan?></option>
                                 <?php endforeach; ?>
                                 </select>
+                                <?= form_error('id_pendidikan', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -394,6 +473,7 @@
                                 <option value="<?php echo $ese->id_eselon?>"><?php echo $ese->eselon?></option>
                                 <?php endforeach; ?>
                                 </select>
+                                <?= form_error('id_eselon', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -410,6 +490,7 @@
                                 <option value="<?php echo $jb->id_jabatan?>"><?php echo $jb->jabatan?></option>
                                 <?php endforeach; ?>
                                 </select>
+                                <?= form_error('id_jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -426,6 +507,7 @@
                                 <option value="<?php echo $un->id_unit?>"><?php echo $un->unit_kerja?></option>
                                 <?php endforeach; ?>
                                 </select>
+                                <?= form_error('id_unit', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -460,12 +542,12 @@
                           id="uploadedAvatar"
                         />
                         <div class="button-wrapper">
-                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                          <label for="foto" class="btn btn-primary me-2 mb-4" tabindex="0">
                             <span class="d-none d-sm-block">Upload Foto</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                             <input
                               type="file"
-                              id="upload"
+                              id="foto"
                               name="foto"
                               class="account-file-input"
                               hidden
@@ -482,6 +564,99 @@
                       </div>
                     </div>
                         </div>
+
+                        <div class="card mb-4">
+                    <h5 class="card-header">Ijazah</h5>
+                        <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="button-wrapper">
+                        <input type="text" class="form-control" disabled placeholder="Nama File" id="ijazah">
+                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload File</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload"
+                              name="ijazah"
+                              class="account-file-input"
+                              hidden
+                              accept="file/pdf"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                        </div>
+
+                        <div class="card mb-4">
+                    <h5 class="card-header">SK CPNS</h5>
+                        <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="button-wrapper">
+                        <input type="text" class="form-control" disabled placeholder="Nama File" id="sk_cpns">
+                          <label for="upload2" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload File</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload2"
+                              name="sk_cpns"
+                              class="account-file-input"
+                              hidden
+                              accept="file/pdf"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                        </div>
+
+                        <div class="card mb-4">
+                    <h5 class="card-header">SK PNS</h5>
+                        <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="button-wrapper">
+                        <input type="text" class="form-control" disabled placeholder="Nama File" id="sk_pns">
+                          <label for="upload3" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload File</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload3"
+                              name="sk_pns"
+                              class="account-file-input"
+                              hidden
+                              accept="file/pdf"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                        </div>
+
+                        <div class="card mb-4">
+                    <h5 class="card-header">SK Pangkat</h5>
+                        <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="button-wrapper">
+                        <input type="text" class="form-control" disabled placeholder="Nama File" id="sk_pangkat">
+                          <label for="upload4" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload File</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload4"
+                              name="sk_pangkat"
+                              class="account-file-input"
+                              hidden
+                              accept="file/pdf"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                        </div>
+
                         <div class="row justify-content-end">
                           <div class="col-sm-10">
                             <button type="submit" name="tambah" class="btn btn-primary">Tambah Data</button>
@@ -495,3 +670,56 @@
     
     <!-- / Content -->  
 <?php $this->load->view('Layouts/footer.php') ?>
+<script>
+
+$('#upload').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#ijazah").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+
+$('#upload2').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#sk_cpns").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+$('#upload3').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#sk_pns").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+$('#upload4').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#sk_pangkat").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+
+</script>

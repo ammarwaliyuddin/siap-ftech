@@ -24,8 +24,9 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Unit Kerja</th>
-                                <th>Alamat</th>
-                                <th>Tanggal Lahir</th>
+                                <th>Jabatan</th>
+                                <th>Pangkat</th>
+                                <th>Pendidikan</th>
                                 <th>Foto</th>
                                 <th>Actions</th>
                             </tr>
@@ -39,8 +40,9 @@
                                     <th scope="row"><?= $i ?></th>
                                     <td width="200"><?= $d['nama_pegawai'] ?></td>
                                     <td width="100"><?= $d['unit_kerja'] ?></td>
-                                    <td width="300"><?= $d['alamat'] ?></td>
-                                    <td width="300"><?= $d['tanggal_lahir'] ?></td>
+                                    <td width="300"><?= $d['jabatan'] ?></td>
+                                    <td width="300"><?= $d['pangkat'] ?></td>
+                                    <td width="300"><?= $d['pendidikan'] ?></td>
                                     <td>
                                     <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                                     <li
@@ -51,7 +53,7 @@
                                     title="<?= $d['nama_pegawai'] ?>"
                                     >
                                     <img src="<?php if (!empty($d['foto'])) {
-                                                                echo base_url('assets/img/pegawai/' . $d['foto']);
+                                                                echo base_url('assets/file/pegawai/' . $d['foto']);
                                                             } ?>" alt="Avatar" class="rounded-circle" />
                                     </li>
                                     

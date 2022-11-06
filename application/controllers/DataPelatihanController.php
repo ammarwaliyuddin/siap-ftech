@@ -36,7 +36,7 @@ class DataPelatihanController extends CI_Controller {
 				$this->load->view('data_pelatihan/tambah',$data);
         }  else {
 
-            //GAMBAR
+            //File
             $config['upload_path'] = './assets/file/pelatihan/';
             $config['allowed_types'] = 'pdf';
             $config['max_size']  = '8048';
@@ -77,7 +77,7 @@ class DataPelatihanController extends CI_Controller {
 				$this->load->view('data_pelatihan/ubah',$data);
         }  else {
 
-        //GAMBAR
+        //File
         $config['upload_path'] = './assets/file/pelatihan/';
         $config['allowed_types'] = 'pdf';
         $config['max_size']  = '8048';

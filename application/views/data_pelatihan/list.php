@@ -21,8 +21,8 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Pelatihan</th>
                                 <th>Nama Pegawai</th>
+                                <th>Nama Pelatihan</th>
                                 <th>Jam Pelatihan</th>
                                 <th>Tanggal</th>
                                 <th>File</th>
@@ -36,8 +36,8 @@
                                 
                                 <tr>
                                     <th scope="row"><?= $i ?></th>
-                                    <td width="200"><?= $d['nama_pelatihan'] ?></td>
                                     <td width="200"><?= $d['nama_pegawai'] ?></td>
+                                    <td width="200"><?= $d['nama_pelatihan'] ?></td>
                                     <td width="100"><?= $d['jam_pelatihan'] ?></td>
                                     <td width="300"><?= $d['tanggal'] ?></td>
                                     <td width="300"><?= $d['file'] ?></td>

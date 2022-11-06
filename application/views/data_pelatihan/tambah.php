@@ -127,12 +127,11 @@
                               accept="file/pdf"
                             />
                           </label>
-
-                          <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
                         </div>
                       </div>
                     </div>
                         </div>
+                        
                         <div class="row justify-content-end">
                           <div class="col-sm-10">
                             <button type="submit" name="tambah" class="btn btn-primary">Tambah Data</button>

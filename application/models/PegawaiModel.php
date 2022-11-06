@@ -42,7 +42,7 @@ class PegawaiModel extends CI_model
 		return $q;
 	}
 
-    public function tambahdata ($data,$foto)
+    public function tambahdata ($data,$foto,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat)
     {
         $data = [
 			"nama_pegawai" => $this->input->post('nama_pegawai',true),
@@ -50,41 +50,12 @@ class PegawaiModel extends CI_model
 			"id_pangkat" => $this->input->post('id_pangkat',true),
 			"tmt" => $this->input->post('tmt',true),
 			"gaji_pokok" => $this->input->post('gaji_pokok',true),
-			"pejabat" => $this->input->post('pejabat',true),
-			"nomor_sk" => $this->input->post('nomor_sk',true),
-			"tanggal_sk" => $this->input->post('tanggal_sk',true),
-			"id_tipe" => $this->input->post('id_tipe',true),
-			"nomor_kartu" => $this->input->post('nomor_kartu',true),
-			"tempat_lahir" => $this->input->post('tempat_lahir',true),
-			"tanggal_lahir" => $this->input->post('tanggal_lahir',true),
-			"jk" => $this->input->post('jk',true),
-			"agama" => $this->input->post('agama',true),
-			"status_nikah" => $this->input->post('status_nikah',true),
-			"alamat" => $this->input->post('alamat',true),
-			"no_hp" => $this->input->post('no_hp',true),
-			"email" => $this->input->post('email',true),
-			"password" => md5($this->input->post('password',true)),
-			"id_eselon" => $this->input->post('id_eselon',true),
-			"id_jabatan" => $this->input->post('id_jabatan',true),
-			"id_pendidikan" => $this->input->post('id_pendidikan',true),
-			"id_unit" => $this->input->post('id_unit',true),
-            "foto" => $foto,
-			"role" => 'pegawai'
-		];
-		$this->db->insert('tbl_pegawai', $data);
-    }
-
-    public function ubahdata($data,$foto)
-    {
-        $data = [
-			"nama_pegawai" => $this->input->post('nama_pegawai',true),
-			"nip" => $this->input->post('nip',true),
-			"id_pangkat" => $this->input->post('id_pangkat',true),
-			"tmt" => $this->input->post('tmt',true),
-			"gaji_pokok" => $this->input->post('gaji_pokok',true),
-			"pejabat" => $this->input->post('pejabat',true),
-			"nomor_sk" => $this->input->post('nomor_sk',true),
-			"tanggal_sk" => $this->input->post('tanggal_sk',true),
+			"nomor_skcpns" => $this->input->post('nomor_skcpns',true),
+			"tanggal_skcpns" => $this->input->post('tanggal_skcpns',true),
+			"nomor_skpns" => $this->input->post('nomor_skpns',true),
+			"tanggal_skpns" => $this->input->post('tanggal_skpns',true),
+			"nomor_skterakhir" => $this->input->post('nomor_skterakhir',true),
+			"tanggal_skterakhir" => $this->input->post('tanggal_skterakhir',true),
 			"id_tipe" => $this->input->post('id_tipe',true),
 			"nomor_kartu" => $this->input->post('nomor_kartu',true),
 			"tempat_lahir" => $this->input->post('tempat_lahir',true),
@@ -100,7 +71,51 @@ class PegawaiModel extends CI_model
 			"id_jabatan" => $this->input->post('id_jabatan',true),
 			"id_pendidikan" => $this->input->post('id_pendidikan',true),
 			"id_unit" => $this->input->post('id_unit',true),
-            "foto" => $foto
+            "foto" => $foto,
+            "ijazah" => $ijazah,
+            "sk_cpns" => $sk_cpns,
+            "sk_pns" => $sk_pns,
+            "sk_pangkat" => $sk_pangkat,
+			"role" => 'pegawai'
+		];
+		$this->db->insert('tbl_pegawai', $data);
+    }
+
+    public function ubahdata($data,$foto,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat)
+    {
+        $data = [
+			"nama_pegawai" => $this->input->post('nama_pegawai',true),
+			"nip" => $this->input->post('nip',true),
+			"id_pangkat" => $this->input->post('id_pangkat',true),
+			"tmt" => $this->input->post('tmt',true),
+			"gaji_pokok" => $this->input->post('gaji_pokok',true),
+			"nomor_skcpns" => $this->input->post('nomor_skcpns',true),
+			"tanggal_skcpns" => $this->input->post('tanggal_skcpns',true),
+			"nomor_skpns" => $this->input->post('nomor_skpns',true),
+			"tanggal_skpns" => $this->input->post('tanggal_skpns',true),
+			"nomor_skterakhir" => $this->input->post('nomor_skterakhir',true),
+			"tanggal_skterakhir" => $this->input->post('tanggal_skterakhir',true),
+			"id_tipe" => $this->input->post('id_tipe',true),
+			"nomor_kartu" => $this->input->post('nomor_kartu',true),
+			"tempat_lahir" => $this->input->post('tempat_lahir',true),
+			"tanggal_lahir" => $this->input->post('tanggal_lahir',true),
+			"jk" => $this->input->post('jk',true),
+			"agama" => $this->input->post('agama',true),
+			"status_nikah" => $this->input->post('status_nikah',true),
+			"alamat" => $this->input->post('alamat',true),
+			"no_hp" => $this->input->post('no_hp',true),
+			"email" => $this->input->post('email',true),
+			"password" => $this->input->post('password',true),
+			"id_eselon" => $this->input->post('id_eselon',true),
+			"id_jabatan" => $this->input->post('id_jabatan',true),
+			"id_pendidikan" => $this->input->post('id_pendidikan',true),
+			"id_unit" => $this->input->post('id_unit',true),
+            "foto" => $foto,
+            "ijazah" => $ijazah,
+            "sk_cpns" => $sk_cpns,
+            "sk_pns" => $sk_pns,
+            "sk_pangkat" => $sk_pangkat,
+			"role" => 'pegawai'
 		];
         
         $this->db->where('id_pegawai', $this->input->post('id_pegawai'));

@@ -192,7 +192,7 @@
             <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-jabatan')){ echo 'active';}?>">
               <a href="<?= base_url('data-jabatan'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Jabatan Fungsional</div>
+                <div data-i18n="Basic">Jabatan</div>
               </a>
             </li>
             <li class="menu-item <?php if(base_url(uri_string()) == base_url('data-pendidikan')){ echo 'active';}?>">

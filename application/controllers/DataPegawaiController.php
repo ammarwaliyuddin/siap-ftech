@@ -68,17 +68,29 @@ class DataPegawaiController extends CI_Controller {
                 array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Gaji Pokok Tidak Boleh Kosong.</div>'
                     ));
-		$this->form_validation->set_rules('pejabat', 'Pejabat', 'required|trim',
+		$this->form_validation->set_rules('nomor_skcpns', 'Nomor SK CPNS', 'required|trim',
                 array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pejabat Tidak Boleh Kosong.</div>'
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK CPNS Tidak Boleh Kosong.</div>'
                     ));
-		$this->form_validation->set_rules('nomor_sk', 'Nomor SK', 'required|trim',
+		$this->form_validation->set_rules('tanggal_skcpns', 'Tanggal SK CPNS', 'required|trim',
                 array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK Tidak Boleh Kosong.</div>'
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK CPNS Tidak Boleh Kosong.</div>'
                     ));
-		$this->form_validation->set_rules('tanggal_sk', 'Tanggal SK', 'required|trim',
+		$this->form_validation->set_rules('nomor_skpns', 'Nomor SK PNS', 'required|trim',
                 array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK Tidak Boleh Kosong.</div>'
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK PNS Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tanggal_skpns', 'Tanggal SK PNS', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK PNS Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('nomor_skterakhir', 'Nomor SK Pangkat Terakhir', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK Pangkat Terakhir Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tanggal_skterakhir', 'Tanggal SK Pangkat Terakhir', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK Pangkat Terakhir Tidak Boleh Kosong.</div>'
                     ));
 		$this->form_validation->set_rules('id_tipe', 'Tipe Pegawai', 'required|trim',
                 array(
@@ -146,8 +158,8 @@ class DataPegawaiController extends CI_Controller {
         }  else {
 
             //GAMBAR
-            $config['upload_path'] = './assets/img/pegawai/';
-            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['upload_path'] = './assets/file/pegawai/';
+            $config['allowed_types'] = 'jpg|png|jpeg|pdf';
             $config['max_size']  = '8048';
             $config['remove_space'] = TRUE;
 
@@ -158,8 +170,84 @@ class DataPegawaiController extends CI_Controller {
             } else {
                 $foto  = '';
             }
+            if ($this->upload->do_upload('ijazah')) {
+                $ijazah  = $this->upload->data('file_name');
+            } else {
+                $ijazah  = '';
+            }
+            if ($this->upload->do_upload('sk_cpns')) {
+                $sk_cpns  = $this->upload->data('file_name');
+            } else {
+                $sk_cpns  = '';
+            }
+            if ($this->upload->do_upload('sk_pns')) {
+                $sk_pns  = $this->upload->data('file_name');
+            } else {
+                $sk_pns  = '';
+            }
+            if ($this->upload->do_upload('sk_pangkat')) {
+                $sk_pangkat  = $this->upload->data('file_name');
+            } else {
+                $sk_pangkat  = '';
+            }
 
-            $this->PegawaiModel->tambahdata($data,$foto);
+            // //Ijazah 
+            //  $config2['upload_path'] = './assets/file/pegawai/';
+            //  $config2['allowed_types'] = 'pdf';
+            //  $config2['max_size']  = '8048';
+            //  $config2['remove_space'] = TRUE;
+
+            //  $this->load->library('upload', $config2);
+
+            // if ($this->upload->do_upload('ijazah')) {
+            //     $ijazah  = $this->upload->data('file_name');
+            // } else {
+            //     $ijazah  = '';
+            // }
+
+            // //SK cpns 
+            // $config3['upload_path'] = './assets/file/pegawai/';
+            // $config3['allowed_types'] = 'pdf';
+            // $config3['max_size']  = '8048';
+            // $config3['remove_space'] = TRUE;
+
+            // $this->load->library('upload', $config3);
+
+            // if ($this->upload->do_upload('sk_cpns')) {
+            //     $sk_cpns  = $this->upload->data('file_name');
+            // } else {
+            //     $sk_cpns  = '';
+            // }
+
+            // //SK pns 
+            // $config4['upload_path'] = './assets/file/pegawai/';
+            // $config4['allowed_types'] = 'pdf';
+            // $config4['max_size']  = '8048';
+            // $config4['remove_space'] = TRUE;
+
+            // $this->load->library('upload', $config4);
+
+            // if ($this->upload->do_upload('sk_pns')) {
+            //     $sk_pns  = $this->upload->data('file_name');
+            // } else {
+            //     $sk_pns  = '';
+            // }
+
+            // //SK pangkat 
+            // $config5['upload_path'] = './assets/file/pegawai/';
+            // $config5['allowed_types'] = 'pdf';
+            // $config5['max_size']  = '8048';
+            // $config5['remove_space'] = TRUE;
+
+            // $this->load->library('upload', $config5);
+
+            // if ($this->upload->do_upload('sk_pangkat')) {
+            //     $sk_pangkat  = $this->upload->data('file_name');
+            // } else {
+            //     $sk_pangkat  = '';
+            // }
+
+            $this->PegawaiModel->tambahdata($data,$foto,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat);
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             Data Pegawai <strong> </strong> berhasil ditambahkan :)
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -202,17 +290,29 @@ class DataPegawaiController extends CI_Controller {
                 array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Gaji Pokok Tidak Boleh Kosong.</div>'
                     ));
-		$this->form_validation->set_rules('pejabat', 'Pejabat', 'required|trim',
+		$this->form_validation->set_rules('nomor_skcpns', 'Nomor SK CPNS', 'required|trim',
                 array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pejabat Tidak Boleh Kosong.</div>'
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK CPNS Tidak Boleh Kosong.</div>'
                     ));
-		$this->form_validation->set_rules('nomor_sk', 'Nomor SK', 'required|trim',
+		$this->form_validation->set_rules('tanggal_skcpns', 'Tanggal SK CPNS', 'required|trim',
                 array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK Tidak Boleh Kosong.</div>'
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK CPNS Tidak Boleh Kosong.</div>'
                     ));
-		$this->form_validation->set_rules('tanggal_sk', 'Tanggal SK', 'required|trim',
+		$this->form_validation->set_rules('nomor_skpns', 'Nomor SK PNS', 'required|trim',
                 array(
-                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK Tidak Boleh Kosong.</div>'
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK PNS Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tanggal_skpns', 'Tanggal SK PNS', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK PNS Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('nomor_skterakhir', 'Nomor SK Pangkat Terakhir', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor SK Pangkat Terakhir Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('tanggal_skterakhir', 'Tanggal SK Pangkat Terakhir', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Tanggal SK Pangkat Terakhir Tidak Boleh Kosong.</div>'
                     ));
 		$this->form_validation->set_rules('id_tipe', 'Tipe Pegawai', 'required|trim',
                 array(
@@ -280,8 +380,8 @@ class DataPegawaiController extends CI_Controller {
         }  else {
 
         //GAMBAR
-        $config['upload_path'] = './assets/img/pegawai/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['upload_path'] = './assets/file/pegawai/';
+        $config['allowed_types'] = 'jpg|png|jpeg|pdf';
         $config['max_size']  = '8048';
         $config['remove_space'] = TRUE;
 
@@ -292,12 +392,36 @@ class DataPegawaiController extends CI_Controller {
 
         if ($this->upload->do_upload('foto')) {
             $foto  = $this->upload->data('file_name');
-            unlink("./assets/img/pegawai/" . $g['foto']);
+            unlink("./assets/file/pegawai/" . $g['foto']);
         } else {
             $foto  = $g['foto'];
         }
+        if ($this->upload->do_upload('ijazah')) {
+            $ijazah  = $this->upload->data('file_name');
+            unlink("./assets/file/pegawai/" . $g['ijazah']);
+        } else {
+            $ijazah  = $g['ijazah'];
+        }
+        if ($this->upload->do_upload('sk_cpns')) {
+            $sk_cpns  = $this->upload->data('file_name');
+            unlink("./assets/file/pegawai/" . $g['sk_cpns']);
+        } else {
+            $sk_cpns  = $g['sk_cpns'];
+        }
+        if ($this->upload->do_upload('sk_pns')) {
+            $sk_pns  = $this->upload->data('file_name');
+            unlink("./assets/file/pegawai/" . $g['sk_pns']);
+        } else {
+            $sk_pns  = $g['sk_pns'];
+        }
+        if ($this->upload->do_upload('sk_pangkat')) {
+            $sk_pangkat  = $this->upload->data('file_name');
+            unlink("./assets/file/pegawai/" . $g['sk_pangkat']);
+        } else {
+            $sk_pangkat  = $g['sk_pangkat'];
+        }
 
-        $this->PegawaiModel->ubahdata($data,$foto);
+        $this->PegawaiModel->ubahdata($data,$foto,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat);
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Data Pegawai berhasil diubah
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -311,6 +435,14 @@ class DataPegawaiController extends CI_Controller {
     public function hapus()
 	{
 		$id_pegawai = $this->input->get('id_pegawai');
+        $this->db->where('id_pegawai', $id_pegawai);
+        $g =  $this->db->get('tbl_pegawai')->row_array();
+        
+        unlink("./assets/file/pegawai" . $g['foto']);
+        unlink("./assets/file/pegawai" . $g['ijazah']);
+        unlink("./assets/file/pegawai" . $g['sk_cpns']);
+        unlink("./assets/file/pegawai" . $g['sk_pns']);
+        unlink("./assets/file/pegawai" . $g['sk_pangkat']);
         $this->db->delete('tbl_pegawai', array('id_pegawai' => $id_pegawai));
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             Data Pegawai berhasil dihapus
