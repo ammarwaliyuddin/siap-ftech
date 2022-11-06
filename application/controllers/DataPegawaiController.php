@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class DataPegawaiController extends CI_Controller {
 
 	public function __construct()
@@ -453,4 +456,55 @@ class DataPegawaiController extends CI_Controller {
         redirect('data-pegawai');
 		
 	}
+
+    public function exportPegawai() {
+		$fileName = 'pegawai.xlsx';  
+		$employeeData = $this->PegawaiModel->getAllPegawai()->result_array();
+		$spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('A1', "DINAS PETERNAKAN");
+        $sheet->mergeCells('A1:F1');
+        $sheet->getStyle('A1')->getFont()->setBold(TRUE);
+        $sheet->getStyle('A1')->getFont()->setSize(24);
+        $sheet->getStyle('A1')->getAlignment()->setHorizontal('center');
+
+
+        $sheet->setCellValue('A2', "DATA PEGAWAI");
+        $sheet->mergeCells('A2:F2');
+        $sheet->getStyle('A2')->getFont()->setBold(TRUE);
+        $sheet->getStyle('A2')->getFont()->setSize(15);
+        $sheet->getStyle('A2')->getAlignment()->setHorizontal('center');
+
+       	$sheet->setCellValue('A3', 'Nama Pegawai');
+        $sheet->setCellValue('B3', 'NIP');
+        $sheet->setCellValue('C3', 'Alamat');
+        $sheet->setCellValue('D3', 'Nomor HP');
+	    $sheet->setCellValue('E3', 'Email');
+        $sheet->setCellValue('F3', 'Gaji');    
+        $sheet->getStyle('A3:F3')->getFont()->setBold(TRUE);
+        $sheet->getStyle('A3:F3')->getFont()->setSize(12);
+        $sheet->getStyle('A3:F3')->getAlignment()->setHorizontal('center');   
+        $sheet->getColumnDimension('A')->setWidth(20);   
+        $sheet->getColumnDimension('B')->setWidth(20);   
+        $sheet->getColumnDimension('C')->setWidth(20);   
+        $sheet->getColumnDimension('D')->setWidth(20);   
+
+        $rows = 4;
+        
+        foreach ($employeeData as $val){
+            $sheet->setCellValue('A' . $rows, $val['nama_pegawai']);
+            $sheet->setCellValue('B' . $rows, $val['nip']);
+            $sheet->setCellValue('C' . $rows, $val['alamat']);
+            $sheet->setCellValue('D' . $rows, $val['no_hp']);
+	    $sheet->setCellValue('E' . $rows, $val['email']);
+            $sheet->setCellValue('F' . $rows, $val['gaji_pokok']);
+            $rows++;
+        } 
+        $writer = new Xlsx($spreadsheet);
+		$writer->save("assets/".$fileName);
+		header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url()."/assets/".$fileName);              
+    }   
+
 }

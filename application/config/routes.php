@@ -60,6 +60,7 @@ $route['logout'] = 'AuthController/logout';
 $route['data-pegawai'] = 'DataPegawaiController/dataPegawai';
 $route['tambah-pegawai'] = 'DataPegawaiController/tambahPegawai';
 $route['ubah-pegawai'] = 'DataPegawaiController/ubahPegawai';
+$route['export-pegawai'] = 'DataPegawaiController/exportPegawai';
 
 $route['data-pelatihan'] = 'DataPelatihanController/dataPelatihan';
 $route['tambah-pelatihan'] = 'DataPelatihanController/tambahPelatihan';

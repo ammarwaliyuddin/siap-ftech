@@ -13,6 +13,7 @@
                     <div class="col-12">
                         <?php if($this->session->userdata('role') == 'admin'): ?>
                             <a href="<?= base_url('tambah-pegawai'); ?>" class="btn btn-primary">Tambah</a>
+                            <a href="<?= base_url('export-pegawai'); ?>" class="btn btn-success">Export Excel</a>
                         <?php endif; ?>
                     </div>
                     <div class="col-12 mt-4">
