@@ -44,9 +44,10 @@ class DataPangkatController extends CI_Controller {
   public function tambahPangkat()
 	{
     $pangkat = $this->input->post('pangkat');
-    $cekPangkat =  $this->PangkatModel->cekPangkat($pangkat);
+    $golongan = $this->input->post('golongan');
+    $cekPangkat =  $this->PangkatModel->cekPangkat($pangkat,$golongan);
     if(empty($cekPangkat)){
-      $res = $this->PangkatModel->tambahdata($pangkat);
+      $res = $this->PangkatModel->tambahdata($pangkat,$golongan);
       echo $res;
     }else{
       // status 3 jika data sudah ada di db
@@ -82,11 +83,12 @@ class DataPangkatController extends CI_Controller {
     {
       $idPangkat = $this->input->post('idPangkat');
       $pangkat = $this->input->post('pangkat');
+      $golongan = $this->input->post('golongan');
 
-      $cekPangkat =  $this->PangkatModel->cekPangkat($pangkat);
+      $cekPangkat =  $this->PangkatModel->cekPangkat($pangkat,$golongan);
 
       if(empty($cekPangkat)){
-        $res = $this->PangkatModel->ubahdata($idPangkat,$pangkat);
+        $res = $this->PangkatModel->ubahdata($idPangkat,$pangkat,$golongan);
         echo $res;
       }else{
         // status 3 jika data sudah ada di db

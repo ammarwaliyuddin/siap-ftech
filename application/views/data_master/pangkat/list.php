@@ -35,7 +35,8 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Pangkat / Golongan</th>
+                                <th>Pangkat</th>
+                                <th>Golongan</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -47,8 +48,9 @@
                                 <tr>
                                     <th scope="row"><?= $i ?></th>
                                     <td width="row"><?= $d['pangkat'] ?></td>
+                                    <td width="row"><?= $d['golongan'] ?></td>
                                     <td>
-                                    <button class="btn btn-secondary btn-sm button-edit"  data-id_pangkat="<?= $d['id_pangkat']; ?>" data-pangkat="<?= $d['pangkat']; ?>">edit</button>
+                                    <button class="btn btn-secondary btn-sm button-edit"  data-id_pangkat="<?= $d['id_pangkat']; ?>" data-pangkat="<?= $d['pangkat']; ?>" data-golongan="<?= $d['golongan']; ?>">edit</button>
                                     <button class="btn btn-danger btn-sm button-delete"  data-id_pangkat="<?= $d['id_pangkat']; ?>">Hapus</button>
 
                                     </td>
@@ -132,6 +134,26 @@
                 <div id="required"></div>                 
                 </div>
             </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Golongan</label>
+                <div class="col-sm-10">
+                <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-fullname2" class="input-group-text"
+                    ><i class="bx bx-user"></i
+                    ></span>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="golongan"
+                    placeholder="Masukkan Golongan"
+                    aria-label="Masukkan Golongan"
+                    aria-describedby="basic-icon-default-fullname2"
+                    autofocus
+                    /> 
+                </div>
+                <div id="required"></div>                 
+                </div>
+            </div>
                
             </div>
             <div class="modal-footer">
@@ -172,6 +194,26 @@
                     id="edit-pangkat"
                     placeholder="Masukkan Pangkat"
                     aria-label="Masukkan Pangkat"
+                    aria-describedby="basic-icon-default-fullname2"
+                    autofocus
+                    /> 
+                </div>
+                <div id="required"></div>                 
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Golongan</label>
+                <div class="col-sm-10">
+                <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-fullname2" class="input-group-text"
+                    ><i class="bx bx-user"></i
+                    ></span>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="edit-golongan"
+                    placeholder="Masukkan Golongan"
+                    aria-label="Masukkan Golongan"
                     aria-describedby="basic-icon-default-fullname2"
                     autofocus
                     /> 
@@ -243,12 +285,14 @@
      
 	    });
 
-        $(".button-edit").on('click',function(){
+        $("#mytable").on('click',".button-edit",function(){
             id_pangkat = $(this).data('id_pangkat')
             pangkat = $(this).data('pangkat')
+            golongan = $(this).data('golongan')
 
             $("#edit-idPangkat").val(id_pangkat);
             $("#edit-pangkat").val(pangkat);
+            $("#edit-golongan").val(golongan);
 
             // console.log(`unit gan : ${$id_unit}, ${$unit_kerja}`)
             $("#modal-update").modal('show');
@@ -259,8 +303,9 @@
             
             const idPangkat = $('#edit-idPangkat').val();
             const pangkat = $('#edit-pangkat').val();
+            const golongan = $('#edit-golongan').val();
 
-            if(!pangkat){
+            if(!pangkat || !golongan){
                 el = `<span class="text-danger" >Data Tidak Boleh Kosong</span>`;
                 $("#modal-update #required").empty().html(el);
                 
@@ -269,7 +314,7 @@
                     type : "POST",
                     url  : "<?= base_url('ubah-pangkat') ?>",
                     dataType : "JSON",
-                    data : {idPangkat:idPangkat,pangkat:pangkat},
+                    data : {idPangkat:idPangkat,pangkat:pangkat,golongan:golongan},
                     success: function(data){
                         console.log(`data : ${data}`)
                         if(data == 1){
@@ -316,6 +361,7 @@
         $('#add-data').on('click', function() {
             
             const pangkat = $('#pangkat').val();
+            const golongan = $('#golongan').val();
 
             if(!pangkat){
                 el = `<span class="text-danger" >Data Tidak Boleh Kosong</span>`;
@@ -326,7 +372,7 @@
                     type : "POST",
                     url  : "<?= base_url('DataPangkatController/tambahPangkat') ?>",
                     dataType : "JSON",
-                    data : {pangkat:pangkat},
+                    data : {pangkat:pangkat,golongan:golongan},
                     success: function(data){
                         console.log(`data : ${data}`)
                         if(data == 1){

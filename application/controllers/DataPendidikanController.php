@@ -43,10 +43,11 @@ class DataPendidikanController extends CI_Controller {
 
   public function tambahPendidikan()
 	{
-    $pendidikan = $this->input->post('pendidikan');
-    $cekPendidikan =  $this->PendidikanModel->cekPendidikan($pendidikan);
+    $strata = $this->input->post('strata');
+    $jurusan = $this->input->post('jurusan');
+    $cekPendidikan =  $this->PendidikanModel->cekPendidikan($strata,$jurusan);
     if(empty($cekPendidikan)){
-      $res = $this->PendidikanModel->tambahdata($pendidikan);
+      $res = $this->PendidikanModel->tambahdata($strata,$jurusan);
       echo $res;
     }else{
       // status 3 jika data sudah ada di db
@@ -81,12 +82,14 @@ class DataPendidikanController extends CI_Controller {
     public function ubahPendidikan()
     {
       $idPendidikan = $this->input->post('idPendidikan');
-      $pendidikan = $this->input->post('pendidikan');
+      $strata = $this->input->post('strata');
+      $jurusan = $this->input->post('jurusan');
 
-      $cekPendidikan =  $this->PendidikanModel->cekPendidikan($pendidikan);
+      $cekPendidikan =  $this->PendidikanModel->cekPendidikan($strata,$jurusan);
+
 
       if(empty($cekPendidikan)){
-        $res = $this->PendidikanModel->ubahdata($idPendidikan,$pendidikan);
+        $res = $this->PendidikanModel->ubahdata($idPendidikan,$strata,$jurusan);
         echo $res;
       }else{
         // status 3 jika data sudah ada di db

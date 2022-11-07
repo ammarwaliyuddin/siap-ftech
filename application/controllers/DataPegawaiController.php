@@ -151,6 +151,10 @@ class DataPegawaiController extends CI_Controller {
                     array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pendidikan Tidak Boleh Kosong.</div>'
                     ));            
+        $this->form_validation->set_rules('nomor_ijazah', 'Nomor Ijazah', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor Ijazah Tidak Boleh Kosong.</div>'
+                    ));            
         $this->form_validation->set_rules('id_unit', 'Unit Kerja', 'required|trim',
                     array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Unit Kerja Tidak Boleh Kosong.</div>'
@@ -372,7 +376,11 @@ class DataPegawaiController extends CI_Controller {
         $this->form_validation->set_rules('id_pendidikan', 'Pendidikan', 'required|trim',
                     array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pendidikan Tidak Boleh Kosong.</div>'
-                    ));            
+                    ));
+        $this->form_validation->set_rules('nomor_ijazah', 'Nomor Ijazah', 'required|trim',
+                    array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor Ijazah Tidak Boleh Kosong.</div>'
+                    ));                        
         $this->form_validation->set_rules('id_unit', 'Unit Kerja', 'required|trim',
                     array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Unit Kerja Tidak Boleh Kosong.</div>'
@@ -463,43 +471,66 @@ class DataPegawaiController extends CI_Controller {
 		$spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        $sheet->setCellValue('A1', "DINAS PETERNAKAN");
-        $sheet->mergeCells('A1:F1');
+        $sheet->setCellValue('A1', "NOMINATIF PEGAWAI NEGERI SIPIL");
+        $sheet->mergeCells('A1:J1');
         $sheet->getStyle('A1')->getFont()->setBold(TRUE);
-        $sheet->getStyle('A1')->getFont()->setSize(24);
+        $sheet->getStyle('A1')->getFont()->setSize(14);
         $sheet->getStyle('A1')->getAlignment()->setHorizontal('center');
 
 
-        $sheet->setCellValue('A2', "DATA PEGAWAI");
-        $sheet->mergeCells('A2:F2');
+        $sheet->setCellValue('A2', "DINAS PETERNAKAN PROVINSI NUSA TENGGARA TIMUR");
+        $sheet->mergeCells('A2:J2');
         $sheet->getStyle('A2')->getFont()->setBold(TRUE);
-        $sheet->getStyle('A2')->getFont()->setSize(15);
+        $sheet->getStyle('A2')->getFont()->setSize(14);
         $sheet->getStyle('A2')->getAlignment()->setHorizontal('center');
 
-       	$sheet->setCellValue('A3', 'Nama Pegawai');
-        $sheet->setCellValue('B3', 'NIP');
-        $sheet->setCellValue('C3', 'Alamat');
-        $sheet->setCellValue('D3', 'Nomor HP');
-	    $sheet->setCellValue('E3', 'Email');
-        $sheet->setCellValue('F3', 'Gaji');    
-        $sheet->getStyle('A3:F3')->getFont()->setBold(TRUE);
-        $sheet->getStyle('A3:F3')->getFont()->setSize(12);
-        $sheet->getStyle('A3:F3')->getAlignment()->setHorizontal('center');   
+        $sheet->setCellValue('A3', "PER NOVEMBER 2022");
+        $sheet->mergeCells('A3:J3');
+        $sheet->getStyle('A3')->getFont()->setBold(TRUE);
+        $sheet->getStyle('A3')->getFont()->setSize(14);
+        $sheet->getStyle('A3')->getAlignment()->setHorizontal('center');
+
+       	$sheet->setCellValue('A5', 'NO');
+        $sheet->setCellValue('B5', 'NIP');
+       	$sheet->setCellValue('C5', 'NAMA PEGAWAI');
+        $sheet->setCellValue('D5', 'PANGKAT');
+        $sheet->setCellValue('E5', 'JABATAN');
+	    $sheet->setCellValue('F5', 'ESELON');
+        $sheet->setCellValue('G5', 'STATUS');    
+        $sheet->setCellValue('H5', 'AGAMA');    
+        $sheet->setCellValue('I5', 'JK');    
+        $sheet->setCellValue('J5', 'PENDIDIKAN');    
+        $sheet->getStyle('A5:J5')->getFont()->setBold(TRUE);
+        $sheet->getStyle('A5:J5')->getFont()->setSize(12);
+        $sheet->getStyle('A5:J5')->getAlignment()->setHorizontal('center');   
         $sheet->getColumnDimension('A')->setWidth(20);   
         $sheet->getColumnDimension('B')->setWidth(20);   
         $sheet->getColumnDimension('C')->setWidth(20);   
         $sheet->getColumnDimension('D')->setWidth(20);   
+        $sheet->getColumnDimension('E')->setWidth(20);   
+        $sheet->getColumnDimension('F')->setWidth(20);   
+        $sheet->getColumnDimension('G')->setWidth(20);   
+        $sheet->getColumnDimension('H')->setWidth(20);   
+        $sheet->getColumnDimension('I')->setWidth(20);   
+        $sheet->getColumnDimension('J')->setWidth(20);   
 
-        $rows = 4;
+        $rows = 6;
         
+        $i = 1;
         foreach ($employeeData as $val){
-            $sheet->setCellValue('A' . $rows, $val['nama_pegawai']);
+            
+            $sheet->setCellValue('A' . $rows, $i);
             $sheet->setCellValue('B' . $rows, $val['nip']);
-            $sheet->setCellValue('C' . $rows, $val['alamat']);
-            $sheet->setCellValue('D' . $rows, $val['no_hp']);
-	    $sheet->setCellValue('E' . $rows, $val['email']);
-            $sheet->setCellValue('F' . $rows, $val['gaji_pokok']);
+            $sheet->setCellValue('C' . $rows, $val['nama_pegawai']);
+            $sheet->setCellValue('D' . $rows, $val['pangkat']);
+            $sheet->setCellValue('E' . $rows, $val['jabatan']);
+	        $sheet->setCellValue('F' . $rows, $val['eselon']);
+            $sheet->setCellValue('G' . $rows, $val['status_nikah']);
+            $sheet->setCellValue('H' . $rows, $val['agama']);
+            $sheet->setCellValue('I' . $rows, $val['jk']);
+            $sheet->setCellValue('J' . $rows, $val['strata']."/".$val['jurusan']);
             $rows++;
+            $i++;
         } 
         $writer = new Xlsx($spreadsheet);
 		$writer->save("assets/".$fileName);
