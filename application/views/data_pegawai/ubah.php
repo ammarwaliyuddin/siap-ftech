@@ -29,6 +29,7 @@
                                 <option value="<?php echo $tipe->id_tipe?>"<?php if($tipe->id_tipe == $pegawai['id_tipe']){echo "selected";} ?>><?php echo $tipe->tipe?> </option>
                                 <?php endforeach; ?> 
                                 </select>
+                                <?= form_error('id_tipe', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -68,197 +69,11 @@
                                 aria-label="Masukkan NIP"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Pangkat/Golongan</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-group"></i
-                              ></span>
-                                <select class="form-select" id="id_pangkat" name="id_pangkat" aria-label="Default select example">
-                                <?php foreach ($pangkat as $pan) : ?>
-                                <option value="<?php echo $pan->id_pangkat?>"<?php if($pan->id_pangkat == $pegawai['id_pangkat']){echo "selected";} ?>><?php echo $pan->pangkat?> </option>
-                                <?php endforeach; ?> 
-                                </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">TMT</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-calendar"></i
-                              ></span>
-                              <input
-                                type="date"
-                                class="form-control"
-                                id="tmt"
-                                name="tmt"
-                                value="<?php echo $pegawai['tmt'];?>"
-                                aria-label="Masukkan TMT"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Gaji Pokok</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-money"></i
-                              ></span>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="gaji_pokok"
-                                name="gaji_pokok"
-                                value="<?php echo $pegawai['gaji_pokok'];?>"
-                                aria-label="Masukkan Gaji pokok"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
+                              <?= form_error('nip', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
                         
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK CPNS(No SK)</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-task"></i
-                              ></span>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="nomor_skcpns"
-                                name="nomor_skcpns"
-                                value="<?php echo $pegawai['nomor_skcpns'];?>"
-                                aria-label="Masukkan nomor SK CPNS"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK CPNS (Tanggal SK)</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-calendar"></i
-                              ></span>
-                              <input
-                                type="date"
-                                class="form-control"
-                                id="tanggal_skcpns"
-                                name="tanggal_skcpns"
-                                value="<?php echo $pegawai['tanggal_skcpns'];?>"
-                                aria-label="Pilih tanggal SK CPNS"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK PNS (No SK)</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-task"></i
-                              ></span>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="nomor_skpns"
-                                name="nomor_skpns"
-                                value="<?php echo $pegawai['nomor_skpns'];?>"
-                                aria-label="Masukkan nomor SK PNS"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK PNS (Tanggal SK)</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-calendar"></i
-                              ></span>
-                              <input
-                                type="date"
-                                class="form-control"
-                                id="tanggal_skpns"
-                                name="tanggal_skpns"
-                                value="<?php echo $pegawai['tanggal_skpns'];?>"
-                                aria-label="Pilih tanggal SK PNS"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK Pangkat Terakhir (No SK)</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-task"></i
-                              ></span>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="nomor_skterakhir"
-                                name="nomor_skterakhir"
-                                value="<?php echo $pegawai['nomor_skterakhir'];?>"
-                                aria-label="Masukkan nomor SK Pangkat Terakhir"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK Pangkat Terakhir (Tanggal SK)</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-calendar"></i
-                              ></span>
-                              <input
-                                type="date"
-                                class="form-control"
-                                id="tanggal_skterakhir"
-                                name="tanggal_skterakhir"
-                                value="<?php echo $pegawai['tanggal_skterakhir'];?>"
-                                aria-label="Pilih tanggal SK Pangkat Terakhir"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nomor Kartu Pegawai</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-id-card"></i
-                              ></span>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="nomor_kartu"
-                                name="nomor_kartu"
-                                value="<?php echo $pegawai['nomor_kartu'];?>"
-                                aria-label="Masukkan Nomor Kartu Pegawai"
-                                aria-describedby="basic-icon-default-fullname2"
-                              />
-                            </div>
-                          </div>
-                        </div>
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tempat Lahir</label>
                           <div class="col-sm-10">
@@ -275,6 +90,7 @@
                                 aria-label="Masukkan Tempat Lahir"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('tempat_lahir', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -294,6 +110,7 @@
                                 aria-label="Pilih tanggal lahir"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('tanggal_lahir', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -306,9 +123,10 @@
                               ></span>
                               <select class="form-select" id="jk" name="jk" aria-label="Default select example">
                                 <option value="">Pilih Jenis Kelamin</option>
-                                <option value="1" <?php if($pegawai['jk'] == '1'){echo "selected";} ?>>Pria</option>
-                                <option value="2" <?php if($pegawai['jk'] == '2'){echo "selected";} ?>>Wanita</option>
+                                <option value="Pria" <?php if($pegawai['jk'] == 'Pria'){echo "selected";} ?>>Pria</option>
+                                <option value="Wanita" <?php if($pegawai['jk'] == 'Wanita'){echo "selected";} ?>>Wanita</option>
                                 </select>
+                                <?= form_error('jk', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -321,13 +139,14 @@
                               ></span>
                               <select class="form-select" id="agama" name="agama" aria-label="Default select example">
                                 <option value="">Pilih Agama</option>
-                                <option value="1" <?php if($pegawai['agama'] == '1'){echo "selected";} ?>>Islam</option>
-                                <option value="2" <?php if($pegawai['agama'] == '2'){echo "selected";} ?>>Kristen Protestan</option>
-                                <option value="3" <?php if($pegawai['agama'] == '3'){echo "selected";} ?>>Katolik</option>
-                                <option value="4" <?php if($pegawai['agama'] == '4'){echo "selected";} ?>>Hindu</option>
-                                <option value="5" <?php if($pegawai['agama'] == '5'){echo "selected";} ?>>Buddha</option>
-                                <option value="6" <?php if($pegawai['agama'] == '6'){echo "selected";} ?>>Konghucu</option>
+                                <option value="Islam" <?php if($pegawai['agama'] == 'Islam'){echo "selected";} ?>>Islam</option>
+                                <option value="Kristen Protestan" <?php if($pegawai['agama'] == 'Kristen Protestan'){echo "selected";} ?>>Kristen Protestan</option>
+                                <option value="Katolik" <?php if($pegawai['agama'] == 'Katolik'){echo "selected";} ?>>Katolik</option>
+                                <option value="Hindu" <?php if($pegawai['agama'] == 'Hindu'){echo "selected";} ?>>Hindu</option>
+                                <option value="Buddha" <?php if($pegawai['agama'] == 'Buddha'){echo "selected";} ?>>Buddha</option>
+                                <option value="Konghucu" <?php if($pegawai['agama'] == 'Konghucu'){echo "selected";} ?>>Konghucu</option>
                                 </select>
+                                <?= form_error('agama', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -340,10 +159,11 @@
                               ></span>
                               <select class="form-select" id="status_nikah" name="status_nikah" aria-label="Default select example">
                                 <option value="">Pilih Status Nikah</option>
-                                <option value="1" <?php if($pegawai['status_nikah'] == '1'){echo "selected";} ?>>Nikah</option>
-                                <option value="2" <?php if($pegawai['status_nikah'] == '2'){echo "selected";} ?>>Belum Menikah</option>
-                                <option value="3" <?php if($pegawai['status_nikah'] == '3'){echo "selected";} ?>>Duda / Janda</option>
+                                <option value="Nikah" <?php if($pegawai['status_nikah'] == 'Nikah'){echo "selected";} ?>>Nikah</option>
+                                <option value="Belum Menikah" <?php if($pegawai['status_nikah'] == 'Belum Menikah'){echo "selected";} ?>>Belum Menikah</option>
+                                <option value="Duda / Janda" <?php if($pegawai['status_nikah'] == 'Duda / Janda'){echo "selected";} ?>>Duda / Janda</option>
                                 </select>
+                                <?= form_error('status_nikah', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -363,6 +183,7 @@
                                 aria-label="Masukkan No HP"
                                 aria-describedby="basic-icon-default-phone2"
                               />
+                              <?= form_error('alamat', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -382,6 +203,7 @@
                                 aria-label="Masukkan No HP"
                                 aria-describedby="basic-icon-default-phone2"
                               />
+                              <?= form_error('no_hp', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -399,6 +221,7 @@
                                 aria-label="john.doe"
                                 aria-describedby="basic-icon-default-email2"
                               />
+                              <?= form_error('email', '<small class="text-danger pl-3">', ' </small>') ?>
                               <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
                             </div>
                             <div class="form-text">You can use letters, numbers & periods</div>
@@ -420,6 +243,7 @@
                                 aria-label="Masukkan Password"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
+                              <?= form_error('password', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -432,39 +256,30 @@
                               ></span>
                               <select class="form-select" id="id_pendidikan" name="id_pendidikan" aria-label="Default select example">
                               <?php foreach ($pendidikan as $pk) : ?>
-                                <option value="<?php echo $pk->id_pendidikan?>"<?php if($pk->id_pendidikan == $pegawai['id_pendidikan']){echo "selected";} ?>><?php echo $pk->pendidikan?> </option>
+                                <option value="<?php echo $pk->id_pendidikan?>"<?php if($pk->id_pendidikan == $pegawai['id_pendidikan']){echo "selected";} ?>><?php echo $pk->strata.'-'.$pk->jurusan?> </option>
                                 <?php endforeach; ?> 
                                 </select>
+                                <?= form_error('id_pendidikan', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Eselon</label>
+                          <label class="col-sm-2 form-label" for="basic-icon-default-phone">No Ijazah</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-user"></i
+                              <span id="basic-icon-default-phone2" class="input-group-text"
+                                ><i class="bx bx-task"></i
                               ></span>
-                              <select class="form-select" id="id_eselon" name="id_eselon" aria-label="Default select example">
-                              <?php foreach ($eselon as $ese) : ?>
-                                <option value="<?php echo $ese->id_eselon?>"<?php if($ese->id_eselon == $pegawai['id_eselon']){echo "selected";} ?>><?php echo $ese->eselon?> </option>
-                                <?php endforeach; ?> 
-                                </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Jabatan</label>
-                          <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                              <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-user"></i
-                              ></span>
-                              <select class="form-select" id="id_jabatan" name="id_jabatan" aria-label="Default select example">
-                              <?php foreach ($jabatan as $jb) : ?>
-                                <option value="<?php echo $jb->id_jabatan?>"<?php if($jb->id_jabatan == $pegawai['id_jabatan']){echo "selected";} ?>><?php echo $jb->jabatan?> </option>
-                                <?php endforeach; ?> 
-                                </select>
+                              <input
+                                type="text"
+                                id="nomor_ijazah"
+                                name="nomor_ijazah"
+                                class="form-control phone-mask"
+                                value="<?php echo $pegawai['nomor_ijazah'];?>"
+                                aria-label="Masukkan No Ijazah"
+                                aria-describedby="basic-icon-default-phone2"
+                              />
+                              <?= form_error('nomor_ijazah', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
@@ -480,9 +295,257 @@
                                 <option value="<?php echo $un->id_unit?>"<?php if($un->id_unit == $pegawai['id_unit']){echo "selected";} ?>><?php echo $un->unit_kerja?> </option>
                                 <?php endforeach; ?> 
                                 </select>
+                                <?= form_error('id_unit', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
                         </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Pangkat</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-group"></i
+                              ></span>
+                                <select class="form-select" id="id_pangkat" name="id_pangkat" aria-label="Default select example">
+                                <?php foreach ($pangkat as $pan) : ?>
+                                <option value="<?php echo $pan->id_pangkat?>"<?php if($pan->id_pangkat == $pegawai['id_pangkat']){echo "selected";} ?>><?php echo $pan->pangkat?> </option>
+                                <?php endforeach; ?> 
+                                </select>
+                                <?= form_error('id_pangkat', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Golongan</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-group"></i
+                              ></span>
+                                <select class="form-select" id="golongan" name="golongan" aria-label="Default select example">
+                                <?php foreach ($pangkat as $pan) : ?>
+                                <option value="<?php echo $pan->id_pangkat?>"<?php if($pan->id_pangkat == $pegawai['id_pangkat']){echo "selected";} ?>><?php echo $pan->golongan?> </option>
+                                <?php endforeach; ?> 
+                                </select>
+                                <?= form_error('golongan', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">TMT</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-calendar"></i
+                              ></span>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="tmt"
+                                name="tmt"
+                                value="<?php echo $pegawai['tmt'];?>"
+                                aria-label="Masukkan TMT"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('tmt', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Jabatan</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-user"></i
+                              ></span>
+                              <select class="form-select" id="id_jabatan" name="id_jabatan" aria-label="Default select example">
+                              <?php foreach ($jabatan as $jb) : ?>
+                                <option value="<?php echo $jb->id_jabatan?>"<?php if($jb->id_jabatan == $pegawai['id_jabatan']){echo "selected";} ?>><?php echo $jb->jabatan?> </option>
+                                <?php endforeach; ?> 
+                                </select>
+                                <?= form_error('id_jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Eselon</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-user"></i
+                              ></span>
+                              <select class="form-select" id="id_eselon" name="id_eselon" aria-label="Default select example">
+                              <?php foreach ($eselon as $ese) : ?>
+                                <option value="<?php echo $ese->id_eselon?>"<?php if($ese->id_eselon == $pegawai['id_eselon']){echo "selected";} ?>><?php echo $ese->eselon?> </option>
+                                <?php endforeach; ?> 
+                                </select>
+                                <?= form_error('id_eselon', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nomor Kartu Pegawai</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-id-card"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nomor_kartu"
+                                name="nomor_kartu"
+                                value="<?php echo $pegawai['nomor_kartu'];?>"
+                                aria-label="Masukkan Nomor Kartu Pegawai"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('nomor_kartu', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Gaji Pokok</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-money"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="gaji_pokok"
+                                name="gaji_pokok"
+                                value="<?php echo $pegawai['gaji_pokok'];?>"
+                                aria-label="Masukkan Gaji pokok"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('gaji_pokok', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK CPNS(No SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-task"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nomor_skcpns"
+                                name="nomor_skcpns"
+                                value="<?php echo $pegawai['nomor_skcpns'];?>"
+                                aria-label="Masukkan nomor SK CPNS"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('nomor_skcpns', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK CPNS (Tanggal SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-calendar"></i
+                              ></span>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="tanggal_skcpns"
+                                name="tanggal_skcpns"
+                                value="<?php echo $pegawai['tanggal_skcpns'];?>"
+                                aria-label="Pilih tanggal SK CPNS"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('tanggal_skcpns', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK PNS (No SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-task"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nomor_skpns"
+                                name="nomor_skpns"
+                                value="<?php echo $pegawai['nomor_skpns'];?>"
+                                aria-label="Masukkan nomor SK PNS"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('nomor_skpns', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK PNS (Tanggal SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-calendar"></i
+                              ></span>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="tanggal_skpns"
+                                name="tanggal_skpns"
+                                value="<?php echo $pegawai['tanggal_skpns'];?>"
+                                aria-label="Pilih tanggal SK PNS"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('tanggal_skpns', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK Pangkat Terakhir (No SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-task"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nomor_skterakhir"
+                                name="nomor_skterakhir"
+                                value="<?php echo $pegawai['nomor_skterakhir'];?>"
+                                aria-label="Masukkan nomor SK Pangkat Terakhir"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('nomor_skterakhir', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">SK Pangkat Terakhir (Tanggal SK)</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-calendar"></i
+                              ></span>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="tanggal_skterakhir"
+                                name="tanggal_skterakhir"
+                                value="<?php echo $pegawai['tanggal_skterakhir'];?>"
+                                aria-label="Pilih tanggal SK Pangkat Terakhir"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('tanggal_skterakhir', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        
                         <!-- <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Foto Pegawai</label>
                           <div class="col-sm-10">

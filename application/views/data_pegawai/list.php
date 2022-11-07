@@ -42,8 +42,8 @@
                                     <td width="200"><?= $d['nama_pegawai'] ?></td>
                                     <td width="100"><?= $d['unit_kerja'] ?></td>
                                     <td width="300"><?= $d['jabatan'] ?></td>
-                                    <td width="300"><?= $d['pangkat'] ?></td>
-                                    <td width="300"><?= $d['pendidikan'] ?></td>
+                                    <td width="row"><?= $d['pangkat'].'-' .$d['golongan'] ?></td>
+                                    <td width="row"><?= $d['strata'].'-' .$d['jurusan'] ?></td>
                                     <td>
                                     <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                                     <li

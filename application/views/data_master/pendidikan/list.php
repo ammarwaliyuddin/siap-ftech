@@ -35,6 +35,8 @@
                             <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Strata</th>
+                                <th>Jurusan</th>
                                 <th>Pendidikan</th>
                                 <th>Actions</th>
                             </tr>
@@ -46,9 +48,11 @@
                                 
                                 <tr>
                                     <th scope="row"><?= $i ?></th>
-                                    <td width="row"><?= $d['pendidikan'] ?></td>
+                                    <td width="row"><?= $d['strata'] ?></td>
+                                    <td width="row"><?= $d['jurusan'] ?></td>
+                                    <td width="row"><?= $d['strata'].'-' .$d['jurusan'] ?></td>
                                     <td>
-                                    <button class="btn btn-secondary btn-sm button-edit"  data-id_pendidikan="<?= $d['id_pendidikan']; ?>" data-pendidikan="<?= $d['pendidikan']; ?>">edit</button>
+                                    <button class="btn btn-secondary btn-sm button-edit"  data-id_pendidikan="<?= $d['id_pendidikan']; ?>" data-jurusan="<?= $d['jurusan']; ?>" data-strata="<?= $d['strata']; ?>">edit</button>
                                     <button class="btn btn-danger btn-sm button-delete"  data-id_pendidikan="<?= $d['id_pendidikan']; ?>">Hapus</button>
 
                                     </td>
@@ -111,27 +115,51 @@
             ></button>
             </div>
             <div class="modal-body">
-                
+
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Pendidikan</label>
-                <div class="col-sm-10">
-                <div class="input-group input-group-merge">
-                    <span id="basic-icon-default-fullname2" class="input-group-text"
-                    ><i class="bx bx-user"></i
-                    ></span>
-                    <input
-                    type="text"
-                    class="form-control"
-                    id="pendidikan"
-                    placeholder="Masukkan Pendidikan"
-                    aria-label="Masukkan Pendidikan"
-                    aria-describedby="basic-icon-default-fullname2"
-                    autofocus
-                    /> 
-                </div>
-                <div id="required"></div>                 
-                </div>
-            </div>
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Strata</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-user"></i
+                              ></span>
+                              <select class="form-select" id="strata" name="strata" aria-label="Default select example">
+                                <option value="">Pilih Strata</option>
+                                <option value="SD">SD</option>
+                                <option value="SMP">SMP</option>
+                                <option value="SMA/SMK">SMA/SMK</option>
+                                <option value="D3-Diploma">D3-Diploma</option>
+                                <option value="S1-Sarjana">S1-Sarjana</option>
+                                <option value="S2-Magister">S2-Magister</option>
+                                <option value="S3-Doctor">S3-Doctor</option>
+                                </select>
+                            </div>
+                            <div id="required"></div>
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Jurusan</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-user"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="jurusan"
+                                name="jurusan"
+                                placeholder="Masukkan Jurusan"
+                                aria-label="Masukkan Jurusan"
+                                aria-describedby="basic-icon-default-fullname2"
+                                autofocus
+                              />
+                            </div>
+                            <div id="required"></div>
+                          </div>
+                        </div>
+            
                
             </div>
             <div class="modal-footer">
@@ -157,10 +185,34 @@
             ></button>
             </div>
             <div class="modal-body">
-                
+            <input type="hidden" id="edit-idPendidikan">
+            
+            
             <div class="row mb-3">
-                <input type="hidden" id="edit-idPendidikan">
-                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Pendidikan</label>
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Strata</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-user"></i
+                              ></span>
+                              <select class="form-select" id="edit-strata" aria-label="Default select example">
+                                <option value="">Pilih Strata</option>
+                                <option value="SD">SD</option>
+                                <option value="SMP">SMP</option>
+                                <option value="SMA/SMK" >SMA/SMK</option>
+                                <option value="D3-Diploma">D3-Diploma</option>
+                                <option value="S1-Sarjana">S1-Sarjana</option>
+                                <option value="S2-Magister">S2-Magister</option>
+                                <option value="S3-Doctor">S3-Doctor</option>
+                                </select>
+                            </div>
+                            <div id="required"></div>
+                          </div>
+                        </div>
+
+            <div class="row mb-3">
+                
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Jurusan</label>
                 <div class="col-sm-10">
                 <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"
@@ -169,14 +221,14 @@
                     <input
                     type="text"
                     class="form-control"
-                    id="edit-pendidikan"
-                    placeholder="Masukkan Pendidikan"
-                    aria-label="Masukkan Pendidikan"
+                    id="edit-jurusan"
+                    placeholder="Masukkan Jurusan"
+                    aria-label="Masukkan Jurusan"
                     aria-describedby="basic-icon-default-fullname2"
                     autofocus
                     /> 
                 </div>
-                <div id="required"></div>                 
+                <!-- <div id="required"></div>                  -->
                 </div>
             </div>
                
@@ -243,12 +295,14 @@
      
 	    });
 
-        $(".button-edit").on('click',function(){
+        $("#mytable").on('click',".button-edit",function(){
             id_pendidikan = $(this).data('id_pendidikan')
-            pendidikan = $(this).data('pendidikan')
+            strata = $(this).data('strata')
+            jurusan = $(this).data('jurusan')
 
             $("#edit-idPendidikan").val(id_pendidikan);
-            $("#edit-pendidikan").val(pendidikan);
+            $("#edit-strata").val(strata);
+            $("#edit-jurusan").val(jurusan);
 
             // console.log(`unit gan : ${$id_unit}, ${$unit_kerja}`)
             $("#modal-update").modal('show');
@@ -258,9 +312,10 @@
         $('#update-data').on('click', function() {
             
             const idPendidikan = $('#edit-idPendidikan').val();
-            const pendidikan = $('#edit-pendidikan').val();
+            const strata = $('#edit-strata').val();
+            const jurusan = $('#edit-jurusan').val();
 
-            if(!pendidikan){
+            if(!strata || !jurusan){
                 el = `<span class="text-danger" >Data Tidak Boleh Kosong</span>`;
                 $("#modal-update #required").empty().html(el);
                 
@@ -269,7 +324,7 @@
                     type : "POST",
                     url  : "<?= base_url('ubah-pendidikan') ?>",
                     dataType : "JSON",
-                    data : {idPendidikan:idPendidikan,pendidikan:pendidikan},
+                    data : {idPendidikan:idPendidikan,strata:strata,jurusan:jurusan},
                     success: function(data){
                         console.log(`data : ${data}`)
                         if(data == 1){
@@ -315,9 +370,11 @@
 
         $('#add-data').on('click', function() {
             
-            const pendidikan = $('#pendidikan').val();
+            const strata = $('#strata').val();
+            const jurusan = $('#jurusan').val();
+            console.log(`${strata},jur : ${jurusan}`)
 
-            if(!pendidikan){
+            if(!strata || !jurusan){
                 el = `<span class="text-danger" >Data Tidak Boleh Kosong</span>`;
                 $("#modal-add #required").empty().html(el);
                 
@@ -326,7 +383,7 @@
                     type : "POST",
                     url  : "<?= base_url('DataPendidikanController/tambahPendidikan') ?>",
                     dataType : "JSON",
-                    data : {pendidikan:pendidikan},
+                    data : {strata:strata,jurusan:jurusan},
                     success: function(data){
                         console.log(`data : ${data}`)
                         if(data == 1){

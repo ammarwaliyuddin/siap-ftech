@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 06, 2022 at 10:41 PM
--- Server version: 10.3.36-MariaDB-cll-lve
+-- Host: 127.0.0.1
+-- Generation Time: Nov 07, 2022 at 04:29 PM
+-- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sekolahp_siap`
+-- Database: `kepegawaian`
 --
 
 -- --------------------------------------------------------
@@ -80,31 +79,34 @@ INSERT INTO `tbl_jabatan` (`id_jabatan`, `jabatan`) VALUES
 
 CREATE TABLE `tbl_pangkat` (
   `id_pangkat` int(15) NOT NULL,
-  `pangkat` varchar(50) NOT NULL
+  `pangkat` varchar(50) NOT NULL,
+  `golongan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_pangkat`
 --
 
-INSERT INTO `tbl_pangkat` (`id_pangkat`, `pangkat`) VALUES
-(4, 'Juru Muda TK. I / I/b'),
-(7, 'Juru Muda / I/a'),
-(8, 'Juru / I/c'),
-(9, 'Juru Tk. I / I/d'),
-(10, 'Pengatur Muda / II/a'),
-(11, 'Pengatur Muda Tk. I/ II/b'),
-(12, 'Pengatur / II/c'),
-(13, 'Pengatur Tk. I / II/d'),
-(14, 'Penata Muda / III/a'),
-(15, 'Penata Muda Tk. I / III/b'),
-(16, 'Penata / III/c'),
-(17, 'Penata Tk. I / III/d'),
-(18, 'Pembina / IV/a'),
-(19, 'Pembina Tk. I / IV/b'),
-(20, 'Pembina Utama Muda / IV/c'),
-(21, 'Pembina Utama Madya / IV/d'),
-(22, 'Pembina Utama / IV/e');
+INSERT INTO `tbl_pangkat` (`id_pangkat`, `pangkat`, `golongan`) VALUES
+(4, 'Juru Muda TK. I', ' I/b'),
+(7, 'Juru Muda', ' I/a'),
+(8, 'Juru', 'I/c'),
+(9, 'Juru Tk. I', 'I/d'),
+(10, 'Pengatur Muda', 'II/a'),
+(11, 'Pengatur Muda Tk. I', 'II/b'),
+(12, 'Pengatur', 'II/c'),
+(13, 'Pengatur Tk. I', 'II/d'),
+(14, 'Penata Muda', 'III/a'),
+(15, 'Penata Muda Tk. I', 'III/b'),
+(16, 'Penata', 'III/c'),
+(17, 'Penata Tk. I', 'III/d'),
+(18, 'Pembina', 'IV/a'),
+(19, 'Pembina Tk. I', 'IV/b'),
+(20, 'Pembina Utama Muda', 'IV/c'),
+(21, 'Pembina Utama Madya', 'IV/d'),
+(22, 'Pembina Utama', 'IV/e'),
+(23, 'Pranata Muda', 'IIIA'),
+(24, 'IIIB', 'Pranata Muda');
 
 -- --------------------------------------------------------
 
@@ -122,16 +124,16 @@ CREATE TABLE `tbl_pegawai` (
   `nomor_skcpns` varchar(50) NOT NULL,
   `tanggal_skcpns` date NOT NULL,
   `nomor_skpns` varchar(50) NOT NULL,
-  `tanggal_skpns` int(11) NOT NULL,
+  `tanggal_skpns` date NOT NULL,
   `nomor_skterakhir` varchar(50) NOT NULL,
-  `tanggal_skterakhir` int(11) NOT NULL,
+  `tanggal_skterakhir` date NOT NULL,
   `id_tipe` varchar(5) NOT NULL,
-  `nomor_kartu` int(11) NOT NULL,
+  `nomor_kartu` varchar(50) NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `jk` char(1) NOT NULL,
-  `agama` char(1) NOT NULL,
-  `status_nikah` char(1) NOT NULL,
+  `jk` varchar(25) NOT NULL,
+  `agama` varchar(25) NOT NULL,
+  `status_nikah` varchar(25) NOT NULL,
   `alamat` varchar(250) NOT NULL,
   `no_hp` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -139,6 +141,7 @@ CREATE TABLE `tbl_pegawai` (
   `id_eselon` varchar(10) NOT NULL,
   `id_jabatan` varchar(20) NOT NULL,
   `id_pendidikan` varchar(25) NOT NULL,
+  `nomor_ijazah` varchar(50) NOT NULL,
   `id_unit` varchar(25) NOT NULL,
   `foto` varchar(250) NOT NULL,
   `ijazah` varchar(250) NOT NULL,
@@ -152,10 +155,10 @@ CREATE TABLE `tbl_pegawai` (
 -- Dumping data for table `tbl_pegawai`
 --
 
-INSERT INTO `tbl_pegawai` (`id_pegawai`, `nama_pegawai`, `nip`, `id_pangkat`, `tmt`, `gaji_pokok`, `nomor_skcpns`, `tanggal_skcpns`, `nomor_skpns`, `tanggal_skpns`, `nomor_skterakhir`, `tanggal_skterakhir`, `id_tipe`, `nomor_kartu`, `tempat_lahir`, `tanggal_lahir`, `jk`, `agama`, `status_nikah`, `alamat`, `no_hp`, `email`, `password`, `id_eselon`, `id_jabatan`, `id_pendidikan`, `id_unit`, `foto`, `ijazah`, `sk_cpns`, `sk_pns`, `sk_pangkat`, `role`) VALUES
-(8, 'blitz', '0712354', '3', '2022-10-14', '5.000.000', '', '0000-00-00', '', 0, '', 0, '11', 123456, 'Kota Kupang', '2022-10-14', '1', '1', '1', 'Perumahan Anugerah Sejahtera Blok E no 1 , kecamat', '082146109855', 'admin', '21232f297a57a5a743894a0e4a801fc3', '3', '3', '2', '13', 'angie.jpg', '', '', '', '', 'admin'),
-(14, 'goku', '0712354', '16', '2022-10-31', '5.000.000', '', '0000-00-00', '', 0, '', 0, '11', 123456, 'Kota Kupang', '2022-10-31', '1', '1', '1', 'Perumahan Anugerah Sejahtera Blok E no 1 , kecamatan alak , kota kupang', '082146109855', 'admin.puskesmas@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '4', '1', '5', '16', 'angie1.jpg', 'WhatsApp_Image_2022-10-20_at_14_25_231.jpeg', '', '', '', 'pegawai'),
-(24, 'ichigo', '0712354', '16', '2022-10-31', '5.000.000', '', '0000-00-00', '', 0, '', 0, '11', 123456, 'Kota Kupang', '2022-10-31', '1', '1', '2', 'Perumahan Anugerah Sejahtera Blok E no 1 , kecamatan alak , kota kupang', '082146109855', 'admin.puskesmas@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '4', '1', '17', '20', 'WhatsApp_Image_2022-10-20_at_14_25_23.jpeg', 'Lelang-Pengumuman_Kend1.pdf', 'PengantarPenelitian_Dr_Dwi_Prasetyo-AmaliaRahmah1.pdf', '4453-IZIN_EXPERT-S3TP-JUHAIDATUR_RAHMI_28_Oktober_20211.PDF', 'PENGUMUMAN_DAFTAR_WISUDA_PERIODE_PERTAMA_TAHUN_2022.pdf', 'pegawai');
+INSERT INTO `tbl_pegawai` (`id_pegawai`, `nama_pegawai`, `nip`, `id_pangkat`, `tmt`, `gaji_pokok`, `nomor_skcpns`, `tanggal_skcpns`, `nomor_skpns`, `tanggal_skpns`, `nomor_skterakhir`, `tanggal_skterakhir`, `id_tipe`, `nomor_kartu`, `tempat_lahir`, `tanggal_lahir`, `jk`, `agama`, `status_nikah`, `alamat`, `no_hp`, `email`, `password`, `id_eselon`, `id_jabatan`, `id_pendidikan`, `nomor_ijazah`, `id_unit`, `foto`, `ijazah`, `sk_cpns`, `sk_pns`, `sk_pangkat`, `role`) VALUES
+(8, 'blitz', '0712354', '3', '2022-10-14', '5.000.000', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '11', '123456', 'Kota Kupang', '2022-10-14', '1', '1', '1', 'Perumahan Anugerah Sejahtera Blok E no 1 , kecamat', '082146109855', 'admin', '21232f297a57a5a743894a0e4a801fc3', '3', '3', '2', '', '13', 'angie.jpg', '', '', '', '', 'admin'),
+(14, 'goku', '0712354', '23', '2022-10-31', '5.000.000', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '11', '123456', 'Kota Kupang', '2022-10-31', 'Pria', 'Islam', 'Nikah', 'Perumahan Anugerah Sejahtera Blok E no 1 , kecamatan alak , kota kupang', '082146109855', 'admin.puskesmas@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '4', '1', '24', '', '16', 'angie1.jpg', 'WhatsApp_Image_2022-10-20_at_14_25_231.jpeg', '', '', '', 'pegawai'),
+(24, 'ichigo', '0712354', '24', '2022-10-31', '5.000.000', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '11', '123456', 'Kota Kupang', '2022-10-31', 'Wanita', 'Hindu', 'Nikah', 'Perumahan Anugerah Sejahtera Blok E no 1 , kecamatan alak , kota kupang', '082146109855', 'admin.puskesmas@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '4', '1', '24', '', '20', 'WhatsApp_Image_2022-10-20_at_14_25_23.jpeg', 'Lelang-Pengumuman_Kend1.pdf', 'PengantarPenelitian_Dr_Dwi_Prasetyo-AmaliaRahmah1.pdf', '4453-IZIN_EXPERT-S3TP-JUHAIDATUR_RAHMI_28_Oktober_20211.PDF', 'PENGUMUMAN_DAFTAR_WISUDA_PERIODE_PERTAMA_TAHUN_2022.pdf', 'pegawai');
 
 -- --------------------------------------------------------
 
@@ -188,30 +191,26 @@ INSERT INTO `tbl_pelatihan` (`id_pelatihan`, `nama_pelatihan`, `id_pegawai`, `ja
 
 CREATE TABLE `tbl_pendidikan` (
   `id_pendidikan` int(15) NOT NULL,
-  `pendidikan` varchar(50) NOT NULL
+  `strata` varchar(25) NOT NULL,
+  `jurusan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_pendidikan`
 --
 
-INSERT INTO `tbl_pendidikan` (`id_pendidikan`, `pendidikan`) VALUES
-(2, 'Sarjana/S-1'),
-(5, 'Magister/S-2'),
-(6, 'Diploma III/D-3'),
-(7, 'SMA/SPP/SMEA/SMK'),
-(8, 'SMP'),
-(9, 'SD'),
-(10, 'S-2 Ilmu Peternakan'),
-(11, 'S-2 Ilmu Ternak'),
-(12, 'S-2 Manajemen'),
-(13, 'S-2 Manajemen SDM'),
-(14, 'S-2 Pembangunan Peternakan'),
-(15, 'S-2 Pertanian'),
-(16, 'S-2 Sains Veteriner'),
-(17, 'S-2 Administrasi Publik'),
-(18, 'S-2 Peternakan'),
-(19, 'D-III Penyuluh Peternakan');
+INSERT INTO `tbl_pendidikan` (`id_pendidikan`, `strata`, `jurusan`) VALUES
+(24, 'S2-Magister', 'Agama'),
+(25, 'D3-Diploma', 'Penyuluh Peternakan'),
+(26, 'S2-Magister', 'Administrasi Publik'),
+(27, 'S2-Magister', 'Ilmu Peternakan'),
+(28, 'S2-Magister', 'Ilmu Ternak'),
+(29, 'S2-Magister', 'Manajemen'),
+(30, 'S2-Magister', 'Manajemen SDM'),
+(31, 'S2-Magister', 'Pembangunan Peternakan'),
+(32, 'S2-Magister', 'Pertanian'),
+(33, 'S2-Magister', 'Peternakan'),
+(34, 'S2-Magister', 'Sains Veteriner');
 
 -- --------------------------------------------------------
 
@@ -349,7 +348,7 @@ ALTER TABLE `tbl_jabatan`
 -- AUTO_INCREMENT for table `tbl_pangkat`
 --
 ALTER TABLE `tbl_pangkat`
-  MODIFY `id_pangkat` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_pangkat` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_pegawai`
@@ -367,7 +366,7 @@ ALTER TABLE `tbl_pelatihan`
 -- AUTO_INCREMENT for table `tbl_pendidikan`
 --
 ALTER TABLE `tbl_pendidikan`
-  MODIFY `id_pendidikan` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pendidikan` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbl_tipe`

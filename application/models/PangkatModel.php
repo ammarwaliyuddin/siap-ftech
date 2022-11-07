@@ -22,9 +22,9 @@ class PangkatModel extends CI_model
 		return $this->db->get_where('tbl_pangkat' , ['id_pangkat' => $id])->row_array();
 	}
 
-	public function cekPangkat ($data)
+	public function cekPangkat ($pangkat,$golongan)
     {
-        return $this->db->get_where('tbl_pangkat' , ['pangkat' => $data])->row_array();
+        return $this->db->get_where('tbl_pangkat' , ['pangkat' => $pangkat , 'golongan' => $golongan])->row_array();
     }
 
     // public function tambahdata ($data)
@@ -35,10 +35,11 @@ class PangkatModel extends CI_model
 	// 	$this->db->insert('tbl_pangkat', $data);
     // }
 
-	public function tambahdata ($data)
+	public function tambahdata ($pangkat,$golongan)
     {
         $data = [
-			"pangkat" => $data
+			"pangkat" => $pangkat,
+			"golongan" => $golongan
 		];
 		return $this->db->insert('tbl_pangkat', $data);
     }
@@ -53,10 +54,11 @@ class PangkatModel extends CI_model
 	// 	$this->db->update('tbl_pangkat', $data);
     // }
 
-	public function ubahdata($idPangkat,$pangkat)
+	public function ubahdata($idPangkat,$pangkat,$golongan)
     {
         $data = [
-			"pangkat" => $pangkat
+			"pangkat" => $pangkat,
+			"golongan" => $golongan
 		];
         
         $this->db->where('id_pangkat', $idPangkat);

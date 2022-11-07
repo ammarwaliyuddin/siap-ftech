@@ -13,7 +13,7 @@ class PendidikanModel extends CI_model
 	
     public function getAllPendidikan()
     {
-        $q = $this->db->query("SELECT * FROM tbl_pendidikan ORDER BY pendidikan ASC ");
+        $q = $this->db->query("SELECT * FROM tbl_pendidikan ORDER BY strata ASC ");
 		return $q;
     }
 
@@ -22,9 +22,9 @@ class PendidikanModel extends CI_model
 		return $this->db->get_where('tbl_pendidikan' , ['id_pendidikan' => $id])->row_array();
 	}
 
-	public function cekPendidikan ($data)
+	public function cekPendidikan ($strata,$jurusan)
     {
-        return $this->db->get_where('tbl_pendidikan' , ['pendidikan' => $data])->row_array();
+        return $this->db->get_where('tbl_pendidikan' , ['strata' => $strata , 'jurusan' => $jurusan])->row_array();
     }
 
     // public function tambahdata ($data)
@@ -35,10 +35,11 @@ class PendidikanModel extends CI_model
 	// 	$this->db->insert('tbl_pendidikan', $data);
     // }
 
-	public function tambahdata ($data)
+	public function tambahdata ($strata,$jurusan)
     {
         $data = [
-			"pendidikan" => $data
+			"strata" => $strata,
+			"jurusan" => $jurusan
 		];
 		return $this->db->insert('tbl_pendidikan', $data);
     }
@@ -53,10 +54,11 @@ class PendidikanModel extends CI_model
 	// 	$this->db->update('tbl_pendidikan', $data);
     // }
 
-	public function ubahdata($idPendidikan,$pendidikan)
+	public function ubahdata($idPendidikan,$strata,$jurusan)
     {
         $data = [
-			"pendidikan" => $pendidikan
+			"strata" => $strata,
+			"jurusan" => $jurusan
 		];
         
         $this->db->where('id_pendidikan', $idPendidikan);
