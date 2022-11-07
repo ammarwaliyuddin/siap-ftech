@@ -310,7 +310,7 @@
                                 <select class="form-select" id="id_pangkat" name="id_pangkat" aria-label="Default select example">
                                 <option value="">Pilih Pangkat</option>
                                 <?php foreach ($pangkat as $pan) : ?>
-                                <option value="<?php echo $pan->id_pangkat?>"><?php echo $pan->pangkat?></option>
+                                <option value="<?php echo $pan->id_pangkat?>" data-golongan="<?= $pan->golongan?>"><?php echo $pan->pangkat?></option>
                                 <?php endforeach; ?>
                                 </select>
                                 <?= form_error('id_pangkat', '<small class="text-danger pl-3">', ' </small>') ?>
@@ -324,12 +324,16 @@
                               <span id="basic-icon-default-fullname2" class="input-group-text"
                                 ><i class="bx bx-group"></i
                               ></span>
-                                <select class="form-select" id="golongan" name="golongan" aria-label="Default select example">
-                                <option value="">Pilih Golongan</option>
-                                <?php foreach ($pangkat as $pan) : ?>
-                                <option value="<?php echo $pan->id_pangkat?>"><?php echo $pan->golongan?></option>
-                                <?php endforeach; ?>
-                                </select>
+                              <div class="get-golongan form-control">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Masukkan golongan"
+                                  aria-describedby="basic-icon-default-fullname2"
+                                  readonly
+                                />
+                              </div>
+                             
                                 <?= form_error('golongan', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                           </div>
@@ -710,6 +714,18 @@
     <!-- / Content -->  
 <?php $this->load->view('Layouts/footer.php') ?>
 <script>
+
+$('#id_pangkat').change(function(e){
+    id_pangkat = $(this).val()
+    gol= $(this).find("option:selected").attr('data-golongan')
+    
+    el = `
+    <input type="text" class="form-control"  placeholder="${gol}" readonly/>
+    <input type='hidden' value="${id_pangkat}" name="golongan" id="golongan" />`
+
+    $(".get-golongan").empty().html(el);
+    
+})
 
 $('#upload').change(function(e) {
         var fileName = e.target.files[0].name;
