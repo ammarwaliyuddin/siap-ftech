@@ -42,11 +42,13 @@ class PegawaiModel extends CI_model
 		return $q;
 	}
 
-    public function tambahdata ($data,$foto,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat)
+    public function tambahdata ($data,$foto,$ktp,$kk,$kartu_pegawai,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat)
     {
         $data = [
 			"nama_pegawai" => $this->input->post('nama_pegawai',true),
 			"nip" => $this->input->post('nip',true),
+			"nik" => $this->input->post('nik',true),
+			"nomor_kk" => $this->input->post('nomor_kk',true),
 			"id_pangkat" => $this->input->post('id_pangkat',true),
 			"tmt" => $this->input->post('tmt',true),
 			"gaji_pokok" => $this->input->post('gaji_pokok',true),
@@ -73,6 +75,9 @@ class PegawaiModel extends CI_model
 			"nomor_ijazah" => $this->input->post('nomor_ijazah',true),
 			"id_unit" => $this->input->post('id_unit',true),
             "foto" => $foto,
+            "ktp" => $ktp,
+            "kk" => $kk,
+            "kartu_pegawai" => $kartu_pegawai,
             "ijazah" => $ijazah,
             "sk_cpns" => $sk_cpns,
             "sk_pns" => $sk_pns,
@@ -82,11 +87,13 @@ class PegawaiModel extends CI_model
 		$this->db->insert('tbl_pegawai', $data);
     }
 
-    public function ubahdata($data,$foto,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat)
+    public function ubahdata($data,$foto,$ktp,$kk,$kartu_pegawai,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat)
     {
         $data = [
 			"nama_pegawai" => $this->input->post('nama_pegawai',true),
 			"nip" => $this->input->post('nip',true),
+			"nik" => $this->input->post('nik',true),
+			"nomor_kk" => $this->input->post('nomor_kk',true),
 			"id_pangkat" => $this->input->post('id_pangkat',true),
 			"tmt" => $this->input->post('tmt',true),
 			"gaji_pokok" => $this->input->post('gaji_pokok',true),
@@ -113,6 +120,9 @@ class PegawaiModel extends CI_model
 			"nomor_ijazah" => $this->input->post('nomor_ijazah',true),
 			"id_unit" => $this->input->post('id_unit',true),
             "foto" => $foto,
+            "ktp" => $ktp,
+            "kk" => $kk,
+            "kartu_pegawai" => $kartu_pegawai,
             "ijazah" => $ijazah,
             "sk_cpns" => $sk_cpns,
             "sk_pns" => $sk_pns,

@@ -24,6 +24,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
+                                <th>NIP</th>
                                 <th>Unit Kerja</th>
                                 <th>Jabatan</th>
                                 <th>Pangkat</th>
@@ -40,6 +41,7 @@
                                 <tr>
                                     <th scope="row"><?= $i ?></th>
                                     <td width="200"><?= $d['nama_pegawai'] ?></td>
+                                    <td width="200"><?= $d['nip'] ?></td>
                                     <td width="100"><?= $d['unit_kerja'] ?></td>
                                     <td width="300"><?= $d['jabatan'] ?></td>
                                     <td width="row"><?= $d['pangkat'].'-' .$d['golongan'] ?></td>

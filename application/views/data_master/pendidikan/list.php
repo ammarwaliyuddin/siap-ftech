@@ -128,7 +128,8 @@
                                 <option value="SD">SD</option>
                                 <option value="SMP">SMP</option>
                                 <option value="SMA/SMK">SMA/SMK</option>
-                                <option value="D3-Diploma">D3-Diploma</option>
+                                <option value="D-III-Diploma">D-III-Diploma</option>
+                                <option value="D-IV-Sarjana Terapan">D-IV-Sarjana Terapan</option>
                                 <option value="S1-Sarjana">S1-Sarjana</option>
                                 <option value="S2-Magister">S2-Magister</option>
                                 <option value="S3-Doctor">S3-Doctor</option>
@@ -200,7 +201,8 @@
                                 <option value="SD">SD</option>
                                 <option value="SMP">SMP</option>
                                 <option value="SMA/SMK" >SMA/SMK</option>
-                                <option value="D3-Diploma">D3-Diploma</option>
+                                <option value="D-III-Diploma">D-III-Diploma</option>
+                                <option value="D-IV-Sarjana Terapan">D-IV-Sarjana Terapan</option>
                                 <option value="S1-Sarjana">S1-Sarjana</option>
                                 <option value="S2-Magister">S2-Magister</option>
                                 <option value="S3-Doctor">S3-Doctor</option>
@@ -228,7 +230,7 @@
                     autofocus
                     /> 
                 </div>
-                <!-- <div id="required"></div>                  -->
+                <div id="required"></div>                 
                 </div>
             </div>
                

@@ -59,6 +59,14 @@ class DataPegawaiController extends CI_Controller {
                 array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> NIP Tidak Boleh Kosong.</div>'
                     ));
+		$this->form_validation->set_rules('nik', 'NIK', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> NIK Tidak Boleh Kosong.</div>'
+                    ));
+		$this->form_validation->set_rules('nomor_kk', 'Nomor KK', 'required|trim',
+                array(
+                    'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor KK Tidak Boleh Kosong.</div>'
+                    ));
 		$this->form_validation->set_rules('id_pangkat', 'Pangkat', 'required|trim',
                 array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pangkat Tidak Boleh Kosong.</div>'
@@ -177,6 +185,21 @@ class DataPegawaiController extends CI_Controller {
             } else {
                 $foto  = '';
             }
+            if ($this->upload->do_upload('ktp')) {
+                $ktp  = $this->upload->data('file_name');
+            } else {
+                $ktp  = '';
+            }
+            if ($this->upload->do_upload('kk')) {
+                $kk  = $this->upload->data('file_name');
+            } else {
+                $kk  = '';
+            }
+            if ($this->upload->do_upload('kartu_pegawai')) {
+                $kartu_pegawai  = $this->upload->data('file_name');
+            } else {
+                $kartu_pegawai  = '';
+            }
             if ($this->upload->do_upload('ijazah')) {
                 $ijazah  = $this->upload->data('file_name');
             } else {
@@ -254,7 +277,7 @@ class DataPegawaiController extends CI_Controller {
             //     $sk_pangkat  = '';
             // }
 
-            $this->PegawaiModel->tambahdata($data,$foto,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat);
+            $this->PegawaiModel->tambahdata($data,$foto,$ktp,$kk,$kartu_pegawai,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat);
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             Data Pegawai <strong> </strong> berhasil ditambahkan :)
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -285,6 +308,14 @@ class DataPegawaiController extends CI_Controller {
                 array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> NIP Tidak Boleh Kosong.</div>'
                     ));
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim',
+                    array(
+                        'required' => '<div class="alert alert-danger"><strong>Error!</strong> NIK Tidak Boleh Kosong.</div>'
+                        ));
+        $this->form_validation->set_rules('nomor_kk', 'Nomor KK', 'required|trim',
+                    array(
+                        'required' => '<div class="alert alert-danger"><strong>Error!</strong> Nomor KK Tidak Boleh Kosong.</div>'
+                        ));            
 		$this->form_validation->set_rules('id_pangkat', 'Pangkat', 'required|trim',
                 array(
                     'required' => '<div class="alert alert-danger"><strong>Error!</strong> Pangkat Tidak Boleh Kosong.</div>'
@@ -407,6 +438,24 @@ class DataPegawaiController extends CI_Controller {
         } else {
             $foto  = $g['foto'];
         }
+        if ($this->upload->do_upload('ktp')) {
+            $ktp  = $this->upload->data('file_name');
+            unlink("./assets/file/pegawai/" . $g['ktp']);
+        } else {
+            $ktp  = $g['ktp'];
+        }
+        if ($this->upload->do_upload('kk')) {
+            $kk  = $this->upload->data('file_name');
+            unlink("./assets/file/pegawai/" . $g['kk']);
+        } else {
+            $kk  = $g['kk'];
+        }
+        if ($this->upload->do_upload('kartu_pegawai')) {
+            $kartu_pegawai  = $this->upload->data('file_name');
+            unlink("./assets/file/pegawai/" . $g['kartu_pegawai']);
+        } else {
+            $kartu_pegawai  = $g['kartu_pegawai'];
+        }
         if ($this->upload->do_upload('ijazah')) {
             $ijazah  = $this->upload->data('file_name');
             unlink("./assets/file/pegawai/" . $g['ijazah']);
@@ -432,7 +481,7 @@ class DataPegawaiController extends CI_Controller {
             $sk_pangkat  = $g['sk_pangkat'];
         }
 
-        $this->PegawaiModel->ubahdata($data,$foto,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat);
+        $this->PegawaiModel->ubahdata($data,$foto,$ktp,$kk,$kartu_pegawai,$ijazah,$sk_cpns,$sk_pns,$sk_pangkat);
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Data Pegawai berhasil diubah
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -448,12 +497,41 @@ class DataPegawaiController extends CI_Controller {
 		$id_pegawai = $this->input->get('id_pegawai');
         $this->db->where('id_pegawai', $id_pegawai);
         $g =  $this->db->get('tbl_pegawai')->row_array();
+
+        if (!empty($g['foto'])) {
+            unlink("./assets/file/pegawai/" . $g['foto']);
+        }
+        if (!empty($g['ktp'])) {
+            unlink("./assets/file/pegawai/" . $g['ktp']);
+        }
+        if (!empty($g['kk'])) {
+            unlink("./assets/file/pegawai/" . $g['kk']);
+        }
+        if (!empty($g['kartu_pegawai'])) {
+            unlink("./assets/file/pegawai/" . $g['kartu_pegawai']);
+        }
+        if (!empty($g['ijazah'])) {
+            unlink("./assets/file/pegawai/" . $g['ijazah']);
+        }
+        if (!empty($g['sk_cpns'])) {
+            unlink("./assets/file/pegawai/" . $g['sk_cpns']);
+        }
+        if (!empty($g['sk_pns'])) {
+            unlink("./assets/file/pegawai/" . $g['sk_pns']);
+        }
+        if (!empty($g['sk_pangkat'])) {
+            unlink("./assets/file/pegawai/" . $g['sk_pangkat']);
+        }
         
-        unlink("./assets/file/pegawai" . $g['foto']);
-        unlink("./assets/file/pegawai" . $g['ijazah']);
-        unlink("./assets/file/pegawai" . $g['sk_cpns']);
-        unlink("./assets/file/pegawai" . $g['sk_pns']);
-        unlink("./assets/file/pegawai" . $g['sk_pangkat']);
+        
+        // unlink("./assets/file/pegawai/" . $g['foto']);
+        // unlink("./assets/file/pegawai/" . $g['ktp']);
+        // unlink("./assets/file/pegawai/" . $g['kk']);
+        // unlink("./assets/file/pegawai/" . $g['kartu_pegawai']);
+        // unlink("./assets/file/pegawai/" . $g['ijazah']);
+        // unlink("./assets/file/pegawai/" . $g['sk_cpns']);
+        // unlink("./assets/file/pegawai/" . $g['sk_pns']);
+        // unlink("./assets/file/pegawai/" . $g['sk_pangkat']);
         $this->db->delete('tbl_pegawai', array('id_pegawai' => $id_pegawai));
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             Data Pegawai berhasil dihapus

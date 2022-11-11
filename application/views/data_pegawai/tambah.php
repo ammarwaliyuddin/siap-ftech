@@ -73,6 +73,46 @@
                             </div>
                           </div>
                         </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">NIK</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-id-card"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nik"
+                                name="nik"
+                                placeholder="Masukkan NIK"
+                                aria-label="Masukkan NIK"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('nik', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nomor KK</label>
+                          <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-id-card"></i
+                              ></span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nomor_kk"
+                                name="nomor_kk"
+                                placeholder="Masukkan Nomor KK"
+                                aria-label="Masukkan Nomor KK"
+                                aria-describedby="basic-icon-default-fullname2"
+                              />
+                              <?= form_error('nomor_kk', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                          </div>
+                        </div>
                         
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tempat Lahir</label>
@@ -161,7 +201,8 @@
                                 <option value="">Pilih Status Nikah</option>
                                 <option value="Nikah">Nikah</option>
                                 <option value="Belum Menikah">Belum Menikah</option>
-                                <option value="Duda / Janda">Duda / Janda</option>
+                                <option value="Duda">Duda</option>
+                                <option value="Janda">Janda</option>
                                 </select>
                                 <?= form_error('status_nikah', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
@@ -609,6 +650,72 @@
                         </div>
 
                         <div class="card mb-4">
+                    <h5 class="card-header">KTP</h5>
+                        <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="button-wrapper">
+                        <input type="text" class="form-control" disabled placeholder="Nama File" id="ktp">
+                          <label for="uploada" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload File</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="uploada"
+                              name="ktp"
+                              class="account-file-input"
+                              hidden
+                              accept="file/pdf"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                        </div>
+                        <div class="card mb-4">
+                    <h5 class="card-header">KK</h5>
+                        <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="button-wrapper">
+                        <input type="text" class="form-control" disabled placeholder="Nama File" id="kk">
+                          <label for="uploadb" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload File</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="uploadb"
+                              name="kk"
+                              class="account-file-input"
+                              hidden
+                              accept="file/pdf"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                        </div>
+                        <div class="card mb-4">
+                    <h5 class="card-header">Kartu Pegawai</h5>
+                        <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="button-wrapper">
+                        <input type="text" class="form-control" disabled placeholder="Nama File" id="kartu_pegawai">
+                          <label for="uploadc" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload File</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="uploadc"
+                              name="kartu_pegawai"
+                              class="account-file-input"
+                              hidden
+                              accept="file/pdf"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                        </div>
+                        <div class="card mb-4">
                     <h5 class="card-header">Ijazah</h5>
                         <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -767,6 +874,42 @@ $('#upload3').change(function(e) {
 $('#upload4').change(function(e) {
         var fileName = e.target.files[0].name;
         $("#sk_pangkat").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+$('#uploada').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#ktp").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+$('#uploadb').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#kk").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+$('#uploadc').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#kartu_pegawai").val(fileName);
 
         var reader = new FileReader();
         reader.onload = function(e) {
