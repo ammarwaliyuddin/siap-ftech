@@ -61,6 +61,7 @@ $route['data-pegawai'] = 'DataPegawaiController/dataPegawai';
 $route['tambah-pegawai'] = 'DataPegawaiController/tambahPegawai';
 $route['ubah-pegawai'] = 'DataPegawaiController/ubahPegawai';
 $route['export-pegawai'] = 'DataPegawaiController/exportPegawai';
+$route['del-pegawai'] = 'DataPegawaiController/hapus';
 
 $route['data-pelatihan'] = 'DataPelatihanController/dataPelatihan';
 $route['tambah-pelatihan'] = 'DataPelatihanController/tambahPelatihan';

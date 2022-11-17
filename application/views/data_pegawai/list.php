@@ -19,7 +19,7 @@
                     <div class="col-12 mt-4">
 
                         <div class="table-responsive text-nowrap">
-                        <table class="table table-striped" id="mytable"">
+                        <table class="table table-striped" id="mytable">
                             <thead>
                             <tr>
                                 <th>No</th>
@@ -101,13 +101,14 @@
             ></button>
             </div>
             <div class="modal-body">
+                <input type="hidden" id="del-idPegawai">
                 
                 <p>Anda yakin ingin menghapus data ?</p>
                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?= base_url('DataPegawaiController/hapus?id_pegawai=')?><?= $d['id_pegawai'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                <button type="button" id="delete-data"  class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button>
             </div>
             
         </div>
@@ -118,10 +119,51 @@
 <?php $this->load->view('Layouts/footer.php') ?>
 <script>
    $(function() {
-        $(".button-delete").on('click',function(){
-            $data = $('.button-delete').data('id_pegawai')
+   
+        $("#mytable").on('click','.button-delete',function(){
+            const id = $(this).data('id_pegawai')
+            
+            console.log(id)
+            $("#del-idPegawai").val(id)
             $("#modal-delete").modal('show');
-            // alert($data)
         })
+
+        $('#delete-data').on('click', function() {
+            
+            let idPegawai = $('#del-idPegawai').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?= base_url('del-pegawai') ?>",
+                dataType : "JSON",
+                data : {id_pegawai:idPegawai},
+                success: function(data){
+                    console.log(`data : ${data}`)
+                    if(data == 1){
+                        $("#modal-delete").modal('hide');
+                        Swal.fire({
+                            // position: 'top-end',
+                            icon: 'success',
+                            title: 'Data Eselon Berhasil di Hapus',
+                            showConfirmButton: false,
+                            timer: 1200
+                        })
+                        setTimeout(function() { 
+                            location.reload();
+                        }, 1300);
+                    }else{
+
+                        Swal.fire({
+                            // position: 'top-end',
+                            icon: 'warning',
+                            title: 'Data gagal terhapus',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+
+                    }
+                }
+            })
+
+        });
     });
 </script>
