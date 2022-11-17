@@ -23,6 +23,19 @@ class PegawaiModel extends CI_model
 		ORDER BY nama_pegawai ASC ");
 		return $q;
     }
+    public function getAllPegawai_tipe($tipe)
+    {
+        $q = $this->db->query("SELECT * FROM tbl_pegawai , tbl_eselon , tbl_jabatan , tbl_pangkat , tbl_pendidikan , tbl_tipe , tbl_unit
+		WHERE tbl_pegawai.id_eselon = tbl_eselon.id_eselon
+		AND tbl_pegawai.id_jabatan = tbl_jabatan.id_jabatan
+		AND tbl_pegawai.id_pangkat = tbl_pangkat.id_pangkat
+		AND tbl_pegawai.id_pendidikan = tbl_pendidikan.id_pendidikan
+		AND tbl_pegawai.id_tipe = tbl_tipe.id_tipe
+		ANd tbl_pegawai.id_unit = tbl_unit.id_unit
+		AND tbl_pegawai.id_tipe = $tipe
+		ORDER BY nama_pegawai ASC ");
+		return $q;
+    }
 
     // public function getPegawaiById($id)
 	// {

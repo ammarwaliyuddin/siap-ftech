@@ -14,78 +14,48 @@
                         <?php if($this->session->userdata('role') == 'admin'): ?>
                             <a href="<?= base_url('tambah-pegawai'); ?>" class="btn btn-primary">Tambah</a>
                             <a href="<?= base_url('export-pegawai'); ?>" class="btn btn-success">Export Excel</a>
+                            <select class="form-select" id="tipe-pegawai" style="display: inline; width:20%">
+                                <option value='all' selected>Pilih Type Pegawai</option>
+                                <?php foreach ($tipe as $item) :?>
+                                    <option value="<?= $item->id_tipe; ?>"><?= $item->tipe; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                          
                         <?php endif; ?>
                     </div>
+                    
                     <div class="col-12 mt-4">
-
-                        <div class="table-responsive text-nowrap">
-                        <table class="table table-striped" id="mytable">
-                            <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>NIP</th>
-                                <th>Unit Kerja</th>
-                                <th>Jabatan</th>
-                                <th>Pangkat</th>
-                                <th>Pendidikan</th>
-                                <th>Foto</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody class="table-border-bottom-0">
-                            <?php
-                            $i = 1;
-                            foreach ($pegawai as $d) : ?>
-                                
+                        <div id="load-data">
+                            <div class="table-responsive text-nowrap">
+                            <table class="table table-striped" >
+                                <thead>
                                 <tr>
-                                    <th scope="row"><?= $i ?></th>
-                                    <td width="200"><?= $d['nama_pegawai'] ?></td>
-                                    <td width="200"><?= $d['nip'] ?></td>
-                                    <td width="100"><?= $d['unit_kerja'] ?></td>
-                                    <td width="300"><?= $d['jabatan'] ?></td>
-                                    <td width="row"><?= $d['pangkat'].'-' .$d['golongan'] ?></td>
-                                    <td width="row"><?= $d['strata'].'-' .$d['jurusan'] ?></td>
-                                    <td>
-                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                    <li
-                                    data-bs-toggle="tooltip"
-                                    data-popup="tooltip-custom"
-                                    data-bs-placement="top"
-                                    class="avatar avatar-md pull-up"
-                                    title="<?= $d['nama_pegawai'] ?>"
-                                    >
-                                    <img src="<?php if (!empty($d['foto'])) {
-                                                                echo base_url('assets/file/pegawai/' . $d['foto']);
-                                                            } ?>" alt="Avatar" class="rounded-circle" />
-                                    </li>
-                                    
-                                    </ul>
-                                    </td>
-                                    
-                                    <td>
-                                    <a href="" class="btn btn-info btn-sm">Detail</a>
-                                    <!-- <a href="<?php echo base_url('ubah-pegawai');?>/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a> -->
-                                    <a href="<?php echo base_url();?>DataPegawaiController/ubahPegawai/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a>
-                                    <button class="btn btn-danger btn-sm button-delete"  data-id_pegawai="<?= $d['id_pegawai']; ?>">Hapus</button>
-
-                                    </td>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>NIP</th>
+                                    <th>Unit Kerja</th>
+                                    <th>Jabatan</th>
+                                    <th>Pangkat</th>
+                                    <th>Pendidikan</th>
+                                    <th>Foto</th>
+                                    <th>Actions</th>
                                 </tr>
-                            <?php $i++;
-                            endforeach ?>
-                            
-                            
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody class="table-border-bottom-0">
+                                    
+                                
+                                </tbody>
+                            </table>
+                            </div>
+
                         </div>
+                        
                     </div>
                 </div>
                 <!--/ Basic Bootstrap Table -->
             </div>
         </div>
     </div>
-
-   
 
     <!-- Modal -->
     <div class="modal fade" id="modal-delete" tabindex="-1" aria-hidden="true">
@@ -119,11 +89,103 @@
 <?php $this->load->view('Layouts/footer.php') ?>
 <script>
    $(function() {
-   
-        $("#mytable").on('click','.button-delete',function(){
-            const id = $(this).data('id_pegawai')
+
+        showdata();
+
+        function showdata(){
+            tipePegawai = $('#tipe-pegawai').val()
             
-            console.log(id)
+            $.ajax({
+                type : "POST",
+                url  : "<?= base_url('show-pegawai') ?>",
+                dataType : "JSON",
+                data : {tipePegawai:tipePegawai},
+                beforeSend: function(){
+                    el = `<div style="align-items: center;justify-content: center;display: flex;"><div class="spinner-grow text-primary" role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div> Loading...</div>` 
+                    $("#load-data").empty().html(el);
+         
+                },
+                success: function(result){
+
+                    el = '' 
+                    el +=`<div class="table-responsive text-nowrap">
+                            <table class="table table-striped" id="mytable">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>NIP</th>
+                                    <th>Unit Kerja</th>
+                                    <th>Jabatan</th>
+                                    <th>Pangkat</th>
+                                    <th>Pendidikan</th>
+                                    <th>Foto</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0">`   
+                                
+                    if(result.length == 0){
+                        el += `<tr><td colspan='9' style="text-align: center;">Tidak Ada Data</td></tr>`
+
+                    }else{
+                        no = 1
+                        $.each(result, function( index, value ) {
+                            el += `<tr>
+                                            <th scope="row">${no++}</th>
+                                            <td width="200">${value.nama_pegawai}</td>
+                                            <td width="200">${value.nip}</td>
+                                            <td width="100">${value.unit_kerja}</td>
+                                            <td width="300">${value.jabatan}</td>
+                                            <td width="row">${value.pangkat} - ${value.golongan}</td>
+                                            <td width="row">${value.strata} - ${value.jurusan}</td>
+                                            <td>
+                                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                            <li
+                                            data-bs-toggle="tooltip"
+                                            data-popup="tooltip-custom"
+                                            data-bs-placement="top"
+                                            class="avatar avatar-md pull-up"
+                                            title="${value.nama_pegawai}"
+                                            >
+                                            <img src="<?php if (!empty($d['foto'])) {
+                                                                        echo base_url('assets/file/pegawai/' . $d['foto']);
+                                                                    } ?>" alt="Avatar" class="rounded-circle" />
+                                            </li>
+                                            
+                                            </ul>
+                                            </td>
+                                            
+                                            <td>
+                                            <a href="" class="btn btn-info btn-sm">Detail</a>
+                                            <a href="<?php echo base_url();?>DataPegawaiController/ubahPegawai/${value.id_pegawai}" class="btn btn-secondary btn-sm">Ubah</a>
+                                            <button class="btn btn-danger btn-sm button-delete" data-id_pegawai="${value.id_pegawai}">Hapus</button>
+                                            </td>
+                                        </tr>`
+
+                            });
+
+                    }
+                      
+                    
+                    el += ` </tbody>
+                            </table>
+                            </div>`
+                    $("#load-data").empty().html(el);
+                    
+                }
+            })
+
+        }
+        $("#tipe-pegawai").on('change',function(){
+            showdata();
+        })
+   
+        $("#load-data").on('click','.button-delete',function(){
+            const id = $(this).data('id_pegawai')
+ 
             $("#del-idPegawai").val(id)
             $("#modal-delete").modal('show');
         })

@@ -21,12 +21,6 @@ class DataPegawaiController extends CI_Controller {
 	}
 	public function dataPegawai()
 	{
-        if($this->session->userdata('role') == 'admin'){
-            $data['pegawai']=$this->PegawaiModel->getAllPegawai()->result_array();
-        }else{
-            $data['pegawai']=$this->PegawaiModel->getPegawaiById($this->session->userdata('id'))->result_array();
-
-        }
 
         $data['eselon']=$this->EselonModel->getAllEselon()->result();
         $data['jabatan']=$this->JabatanModel->getAllJabatan()->result();
@@ -36,6 +30,25 @@ class DataPegawaiController extends CI_Controller {
         $data['unit']=$this->UnitModel->getAllUnit()->result();
 
 		$this->load->view('data_pegawai/list',$data);
+	}
+
+	public function showPegawai()
+	{
+        if($this->session->userdata('role') == 'admin'){
+            $tipePegawai = $this->input->post('tipePegawai');
+            
+            if($tipePegawai == 'all'){
+                $data['pegawai']=$this->PegawaiModel->getAllPegawai()->result_array();
+
+            }else{
+                $data['pegawai']=$this->PegawaiModel->getAllPegawai_tipe($tipePegawai)->result_array();
+            }
+            
+        }else{
+            $data['pegawai']=$this->PegawaiModel->getPegawaiById($this->session->userdata('id'))->result_array();
+
+        }
+        echo json_encode($data['pegawai']);
 	}
 
 	public function tambahPegawai()

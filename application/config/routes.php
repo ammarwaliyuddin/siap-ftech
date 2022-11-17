@@ -57,6 +57,7 @@ $route['dashboard'] = 'DashboardController';
 $route['login'] = 'AuthController';
 $route['logout'] = 'AuthController/logout';
 
+$route['show-pegawai'] = 'DataPegawaiController/showPegawai';
 $route['data-pegawai'] = 'DataPegawaiController/dataPegawai';
 $route['tambah-pegawai'] = 'DataPegawaiController/tambahPegawai';
 $route['ubah-pegawai'] = 'DataPegawaiController/ubahPegawai';
