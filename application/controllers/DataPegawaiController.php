@@ -21,12 +21,6 @@ class DataPegawaiController extends CI_Controller {
 	}
 	public function dataPegawai()
 	{
-        if($this->session->userdata('role') == 'admin'){
-            $data['pegawai']=$this->PegawaiModel->getAllPegawai()->result_array();
-        }else{
-            $data['pegawai']=$this->PegawaiModel->getPegawaiById($this->session->userdata('id'))->result_array();
-
-        }
 
         $data['eselon']=$this->EselonModel->getAllEselon()->result();
         $data['jabatan']=$this->JabatanModel->getAllJabatan()->result();
@@ -36,6 +30,25 @@ class DataPegawaiController extends CI_Controller {
         $data['unit']=$this->UnitModel->getAllUnit()->result();
 
 		$this->load->view('data_pegawai/list',$data);
+	}
+
+	public function showPegawai()
+	{
+        if($this->session->userdata('role') == 'admin'){
+            $tipePegawai = $this->input->post('tipePegawai');
+            
+            if($tipePegawai == 'all'){
+                $data['pegawai']=$this->PegawaiModel->getAllPegawai()->result_array();
+
+            }else{
+                $data['pegawai']=$this->PegawaiModel->getAllPegawai_tipe($tipePegawai)->result_array();
+            }
+            
+        }else{
+            $data['pegawai']=$this->PegawaiModel->getPegawaiById($this->session->userdata('id'))->result_array();
+
+        }
+        echo json_encode($data['pegawai']);
 	}
 
 	public function tambahPegawai()
@@ -507,7 +520,8 @@ class DataPegawaiController extends CI_Controller {
 
     public function hapus()
 	{
-		$id_pegawai = $this->input->get('id_pegawai');
+		$id_pegawai = $this->input->post('id_pegawai');
+       
         $this->db->where('id_pegawai', $id_pegawai);
         $g =  $this->db->get('tbl_pegawai')->row_array();
 
@@ -545,14 +559,15 @@ class DataPegawaiController extends CI_Controller {
         // unlink("./assets/file/pegawai/" . $g['sk_cpns']);
         // unlink("./assets/file/pegawai/" . $g['sk_pns']);
         // unlink("./assets/file/pegawai/" . $g['sk_pangkat']);
-        $this->db->delete('tbl_pegawai', array('id_pegawai' => $id_pegawai));
-        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data Pegawai berhasil dihapus
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          </div>');
-        redirect('data-pegawai');
+        $res = $this->db->delete('tbl_pegawai', array('id_pegawai' => $id_pegawai));
+        echo $res;
+        // $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        //     Data Pegawai berhasil dihapus
+        //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //     <span aria-hidden="true">&times;</span>
+        //   </button>
+        //   </div>');
+        // redirect('data-pegawai');
 		
 	}
 

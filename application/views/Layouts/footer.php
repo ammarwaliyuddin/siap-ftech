@@ -55,6 +55,8 @@
     <!-- Data tables -->
     <script src="<?= base_url('assets/vendor/libs/datatables/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/libs/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
       $(document).ready(function() {
