@@ -93,25 +93,26 @@
                             </div>
                           </div>
                         </div>
-                        
-                        <!-- <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Foto Pegawai</label>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tanggal Selesai</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                               <span id="basic-icon-default-fullname2" class="input-group-text"
-                                ><i class="bx bx-user"></i
+                                ><i class="bx bx-calendar"></i
                               ></span>
                               <input
-                                type="text"
+                                type="date"
                                 class="form-control"
-                                id="basic-icon-default-fullname"
-                                placeholder="Masukkan Foto Pegawai"
-                                aria-label="Masukkan Foto Pegawai"
+                                id="tanggal_selesai"
+                                name="tanggal_selesai"
+                                value="<?php echo $pelatihan['tanggal_selesai'];?>"
+                                placeholder="Pilih Tanggal Selesai"
+                                aria-label="Pilih Tanggal Selesai"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
                             </div>
                           </div>
-                        </div> -->
+                        </div>
                         <div class="card mb-4">
                     <h5 class="card-header">File Pelatihan</h5>
                         <div class="card-body">

@@ -64,7 +64,7 @@
                                     </td>
                                     
                                     <td>
-                                    <a href="" class="btn btn-info btn-sm">Detail</a>
+                                    <a href="<?php echo base_url();?>DataPegawaiController/detailPegawai/<?php echo $d['id_pegawai'];?>" class="btn btn-info btn-sm">Detail</a>
                                     <!-- <a href="<?php echo base_url('ubah-pegawai');?>/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a> -->
                                     <a href="<?php echo base_url();?>DataPegawaiController/ubahPegawai/<?php echo $d['id_pegawai'];?>" class="btn btn-secondary btn-sm">Ubah</a>
                                     <button class="btn btn-danger btn-sm button-delete"  data-id_pegawai="<?= $d['id_pegawai']; ?>">Hapus</button>

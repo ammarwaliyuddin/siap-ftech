@@ -65,6 +65,8 @@ $route['export-pegawai'] = 'DataPegawaiController/exportPegawai';
 $route['data-pelatihan'] = 'DataPelatihanController/dataPelatihan';
 $route['tambah-pelatihan'] = 'DataPelatihanController/tambahPelatihan';
 $route['ubah-pelatihan'] = 'DataPelatihanController/ubahPelatihan';
+$route['export-pelatihan'] = 'DataPelatihanController/exportPelatihan';
+
 
 $route['data-unit'] = 'DataUnitController/dataUnit';
 $route['tambah-unit'] = 'DataUnitController/tambahUnit';

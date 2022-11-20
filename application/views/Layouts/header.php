@@ -153,17 +153,7 @@
                     <div data-i18n="Basic">Data Pegawai</div>
                 </a>
             </li>
-            <?php if($this->session->userdata('role')== 'admin'): ?>
-            <!-- Components -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Statistik</span></li>
-            <!-- Cards -->
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Data Statistik</div>
-              </a>
-            </li>
-            <?php endif; ?>
+            
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Pelatihan</span></li>
             <!-- Cards -->

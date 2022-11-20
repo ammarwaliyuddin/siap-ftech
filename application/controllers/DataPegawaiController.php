@@ -492,6 +492,19 @@ class DataPegawaiController extends CI_Controller {
         }    
     }
 
+    public function detailPegawai($id)
+    {
+        $data['eselon']=$this->EselonModel->getAllEselon()->result();
+        $data['jabatan']=$this->JabatanModel->getAllJabatan()->result();
+        $data['pangkat']=$this->PangkatModel->getAllPangkat()->result();
+        $data['pendidikan']=$this->PendidikanModel->getAllPendidikan()->result();
+        $data['tipe']=$this->TipeModel->getAllTipe()->result();
+        $data['unit']=$this->UnitModel->getAllUnit()->result();
+        $data['pegawai']=$this->PegawaiModel->getPegawaiById($id)->row_array();
+
+        $this->load->view('data_pegawai/detail',$data);
+    }
+
     public function hapus()
 	{
 		$id_pegawai = $this->input->get('id_pegawai');

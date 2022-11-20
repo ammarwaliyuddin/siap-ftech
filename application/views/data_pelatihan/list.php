@@ -12,6 +12,7 @@
                 <div class="card p-4">
                     <div class="col-12">
                         <a href="<?= base_url('tambah-pelatihan'); ?>" class="btn btn-primary">Tambah</a>
+                        <a href="<?= base_url('export-pelatihan'); ?>" class="btn btn-success">Export Excel</a>
 
                     </div>
                     <div class="col-12 mt-4">
@@ -24,7 +25,8 @@
                                 <th>Nama Pegawai</th>
                                 <th>Nama Pelatihan</th>
                                 <th>Jam Pelatihan</th>
-                                <th>Tanggal</th>
+                                <th>Tanggal Mulai</th>
+                                <th>Tanggal Selesai</th>
                                 <th>File</th>
                                 <th>Actions</th>
                             </tr>
@@ -40,6 +42,7 @@
                                     <td width="200"><?= $d['nama_pelatihan'] ?></td>
                                     <td width="100"><?= $d['jam_pelatihan'] ?></td>
                                     <td width="300"><?= $d['tanggal'] ?></td>
+                                    <td width="300"><?= $d['tanggal_selesai'] ?></td>
                                     <td width="300"><?= $d['file'] ?></td>
                                     <td>
                                     <!-- <a href="<?php echo base_url('ubah-pelatihan');?>/<?php echo $d['id_pelatihan'];?>" class="btn btn-secondary btn-sm">Ubah</a> -->

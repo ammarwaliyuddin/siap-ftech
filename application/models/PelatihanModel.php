@@ -34,6 +34,7 @@ class PelatihanModel extends CI_model
 			"id_pegawai" => $this->input->post('id_pegawai',true),
 			"jam_pelatihan" => $this->input->post('jam_pelatihan',true),
 			"tanggal" => $this->input->post('tanggal',true),
+			"tanggal_selesai" => $this->input->post('tanggal_selesai',true),
             "file" => $file
 		];
 		$this->db->insert('tbl_pelatihan', $data);
@@ -46,6 +47,7 @@ class PelatihanModel extends CI_model
 			"id_pegawai" => $this->input->post('id_pegawai',true),
 			"jam_pelatihan" => $this->input->post('jam_pelatihan',true),
 			"tanggal" => $this->input->post('tanggal',true),
+			"tanggal_selesai" => $this->input->post('tanggal_selesai',true),
             "file" => $file
 		];
         
