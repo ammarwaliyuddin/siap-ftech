@@ -1,3 +1,15 @@
+.body{
+  background-image: url('../img/cover.jpeg') ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; */
+}
+
 .swal2-container {
     z-index: 20000 !important;
   }
+
