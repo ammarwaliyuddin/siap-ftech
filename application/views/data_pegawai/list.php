@@ -133,6 +133,7 @@
                     }else{
                         no = 1
                         $.each(result, function( index, value ) {
+                            foto = (value.foto == null) ? ' ' : `<?= base_url('assets/file/pegawai/') ?>${value.foto}`
                             el += `<tr>
                                             <th scope="row">${no++}</th>
                                             <td width="200">${value.nama_pegawai}</td>
@@ -150,9 +151,7 @@
                                             class="avatar avatar-md pull-up"
                                             title="${value.nama_pegawai}"
                                             >
-                                            <img src="<?php if (!empty($d['foto'])) {
-                                                                        echo base_url('assets/file/pegawai/' . $d['foto']);
-                                                                    } ?>" alt="Avatar" class="rounded-circle" />
+                                            <img src="${foto}" alt="Avatar" class="rounded-circle" />
                                             </li>
                                             
                                             </ul>
