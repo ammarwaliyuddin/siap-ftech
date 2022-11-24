@@ -210,6 +210,69 @@
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname"><?php echo $pegawai['tanggal_skterakhir'];?></label>
                           </div>
                         </div>
+
+                        <?php if($pegawai['ktp'] != null): ?>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">File KTP</label>
+                          <div class="col-sm-10">
+                            <a class="btn btn-sm btn-info" href="<?= base_url('assets/file/pegawai/'.$pegawai['ktp'].''); ?>" download>Download</a>
+                          </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if($pegawai['kk'] != null): ?>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">File KK</label>
+                          <div class="col-sm-10">
+                            <a class="btn btn-sm btn-info" href="<?= base_url('assets/file/pegawai/'.$pegawai['kk'].''); ?>" download>Download</a>
+                          </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if($pegawai['kartu_pegawai'] != null): ?>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">File Kartu Pegawai</label>
+                          <div class="col-sm-10">
+                            <a class="btn btn-sm btn-info" href="<?= base_url('assets/file/pegawai/'.$pegawai['kartu_pegawai'].''); ?>" download>Download</a>
+                          </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if($pegawai['ijazah'] != null): ?>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">File Ijazah</label>
+                          <div class="col-sm-10">
+                            <a class="btn btn-sm btn-info" href="<?= base_url('assets/file/pegawai/'.$pegawai['ijazah'].''); ?>" download>Download</a>
+                          </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if($pegawai['sk_cpns'] != null): ?>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">File SK CPNS</label>
+                          <div class="col-sm-10">
+                            <a class="btn btn-sm btn-info" href="<?= base_url('assets/file/pegawai/'.$pegawai['sk_cpns'].''); ?>" download>Download</a>
+                          </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if($pegawai['sk_pns'] != null): ?>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">File SK PNS</label>
+                          <div class="col-sm-10">
+                            <a class="btn btn-sm btn-info" href="<?= base_url('assets/file/pegawai/'.$pegawai['sk_pns'].''); ?>" download>Download</a>
+                          </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if($pegawai['sk_pangkat'] != null): ?>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">File SK Pangkat</label>
+                          <div class="col-sm-10">
+                            <a class="btn btn-sm btn-info" href="<?= base_url('assets/file/pegawai/'.$pegawai['sk_pangkat'].''); ?>" download>Download</a>
+                          </div>
+                        </div>
+                        <?php endif; ?>
                         
                         <!-- <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Foto Pegawai</label>
