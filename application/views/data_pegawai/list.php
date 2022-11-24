@@ -111,7 +111,7 @@
 
                     el = '' 
                     el +=`<div class="table-responsive text-nowrap">
-                            <table class="table table-striped" id="mytable">
+                            <table class="table table-striped" id="getDataAjax">
                                 <thead>
                                 <tr>
                                     <th>No</th>
@@ -174,6 +174,10 @@
                             </table>
                             </div>`
                     $("#load-data").empty().html(el);
+
+                    $('#getDataAjax').DataTable({
+                        responsive: true
+                    });
                     
                 }
             })
