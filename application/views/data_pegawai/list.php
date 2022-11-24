@@ -159,7 +159,7 @@
                                             </td>
                                             
                                             <td>
-                                            <a href="" class="btn btn-info btn-sm">Detail</a>
+                                            <a href="<?php echo base_url();?>DataPegawaiController/detailPegawai/${value.id_pegawai}" class="btn btn-info btn-sm">Detail</a>
                                             <a href="<?php echo base_url();?>DataPegawaiController/ubahPegawai/${value.id_pegawai}" class="btn btn-secondary btn-sm">Ubah</a>
                                             <button class="btn btn-danger btn-sm button-delete" data-id_pegawai="${value.id_pegawai}">Hapus</button>
                                             </td>
