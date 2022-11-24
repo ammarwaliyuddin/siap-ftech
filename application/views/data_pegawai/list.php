@@ -133,7 +133,11 @@
                     }else{
                         no = 1
                         $.each(result, function( index, value ) {
-                            foto = (value.foto == null) ? ' ' : `<?= base_url('assets/file/pegawai/') ?>${value.foto}`
+                            console.log(`jk : ${value.jk}`)
+                            console.log(`nama : ${value.nama_pegawai}, foto :${value.foto == null}`)
+
+                            _foto = (value.jk == 'Pria') ? '7.png' : '6.png' 
+                            foto = (value.foto == null || value.foto == '' ) ? `<?= base_url('assets/img/avatars/') ?>${_foto}` : `<?= base_url('assets/file/pegawai/') ?>${value.foto}`
                             el += `<tr>
                                             <th scope="row">${no++}</th>
                                             <td width="200">${value.nama_pegawai}</td>
@@ -158,8 +162,8 @@
                                             </td>
                                             
                                             <td>
-                                            <a href="<?php echo base_url();?>DataPegawaiController/detailPegawai/${value.id_pegawai}" class="btn btn-info btn-sm">Detail</a>
-                                            <a href="<?php echo base_url();?>DataPegawaiController/ubahPegawai/${value.id_pegawai}" class="btn btn-secondary btn-sm">Ubah</a>
+                                            <a href="<?= base_url();?>DataPegawaiController/detailPegawai/${value.id_pegawai}" class="btn btn-info btn-sm">Detail</a>
+                                            <a href="<?= base_url();?>DataPegawaiController/ubahPegawai/${value.id_pegawai}" class="btn btn-secondary btn-sm">Ubah</a>
                                             <button class="btn btn-danger btn-sm button-delete" data-id_pegawai="${value.id_pegawai}">Hapus</button>
                                             </td>
                                         </tr>`
